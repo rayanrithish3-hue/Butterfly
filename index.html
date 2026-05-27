@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>For Bharathi Priya 🦋</title>
 
@@ -28,35 +29,44 @@ html{
 body{
   overflow-x:hidden;
   font-family:'Poppins',sans-serif;
+
   background:
-  radial-gradient(circle at top left,#ffd9ef 0%,transparent 30%),
-  radial-gradient(circle at bottom right,#d8c1ff 0%,transparent 35%),
-  linear-gradient(135deg,#fff6fb,#f6efff);
-  color:#5e4768;
+  radial-gradient(circle at top left,#ffdff1 0%,transparent 30%),
+  radial-gradient(circle at bottom right,#d9c4ff 0%,transparent 35%),
+  linear-gradient(135deg,#fff8fc,#f4ecff);
+
+  color:#5f4a68;
   min-height:100vh;
   position:relative;
 }
 
-/* DREAMY GLOW */
+/* DREAMY BACKGROUND */
 
 body::before{
   content:"";
   position:fixed;
   inset:0;
+
   background-image:
   radial-gradient(rgba(255,255,255,.7) 1px, transparent 1px);
-  background-size:45px 45px;
+
+  background-size:40px 40px;
+
   opacity:.35;
-  z-index:-2;
+
   animation:sparkle 10s linear infinite;
+
+  z-index:-2;
 }
 
 @keyframes sparkle{
+
   from{
     transform:translateY(0px);
   }
+
   to{
-    transform:translateY(-45px);
+    transform:translateY(-40px);
   }
 }
 
@@ -64,31 +74,38 @@ body::before{
 
 .butterfly{
   position:fixed;
-  bottom:-120px;
+  bottom:-140px;
   pointer-events:none;
   z-index:1;
-  opacity:.88;
-  mix-blend-mode:screen;
-  animation-name:floatButterfly;
+
+  animation-name:fly;
   animation-timing-function:linear;
   animation-iteration-count:infinite;
-  filter:drop-shadow(0 0 18px rgba(255,255,255,.8));
+
+  opacity:.95;
+
+  filter:
+  drop-shadow(0 0 15px rgba(130,180,255,.6))
+  drop-shadow(0 0 30px rgba(255,255,255,.4));
 }
 
 .butterfly img{
   width:100%;
   display:block;
-  animation:flap .9s ease-in-out infinite;
-  will-change:transform;
+
+  animation:flap .8s ease-in-out infinite;
+
+  transform-origin:center;
 }
 
 @keyframes flap{
+
   0%{
     transform:scaleX(1) rotate(0deg);
   }
 
   50%{
-    transform:scaleX(.72) rotate(3deg);
+    transform:scaleX(.7) rotate(4deg);
   }
 
   100%{
@@ -96,7 +113,7 @@ body::before{
   }
 }
 
-@keyframes floatButterfly{
+@keyframes fly{
 
   0%{
     transform:
@@ -108,8 +125,8 @@ body::before{
   100%{
     transform:
     translateY(-140vh)
-    translateX(220px)
-    rotate(18deg);
+    translateX(240px)
+    rotate(20deg);
   }
 }
 
@@ -117,34 +134,49 @@ body::before{
 
 .hero{
   min-height:100vh;
+
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
+
   text-align:center;
-  padding:30px 20px;
+
+  padding:20px;
+
   position:relative;
   z-index:2;
 }
 
 .hero h1{
   font-family:'Cormorant Garamond',serif;
+
   font-size:5.5rem;
-  color:#8a56b3;
+
+  color:#8754af;
+
   margin-bottom:18px;
-  text-shadow:0 0 25px rgba(201,151,255,.45);
-  animation:fadeUp 1.3s ease;
+
+  text-shadow:
+  0 0 20px rgba(195,150,255,.5);
+
+  animation:fadeUp 1.2s ease;
 }
 
 .hero p{
-  max-width:780px;
+  max-width:760px;
+
   line-height:1.9;
-  font-size:1.15rem;
-  color:#6b5876;
-  animation:fadeUp 1.7s ease;
+
+  font-size:1.12rem;
+
+  color:#6d5a78;
+
+  animation:fadeUp 1.6s ease;
 }
 
 @keyframes fadeUp{
+
   from{
     opacity:0;
     transform:translateY(40px);
@@ -159,66 +191,91 @@ body::before{
 /* MAGIC SECTION */
 
 .magic-section{
-  padding:40px 20px 100px;
+  padding:30px 20px 100px;
+
   text-align:center;
+
   position:relative;
   z-index:2;
 }
 
 .magic-title{
   font-family:'Cormorant Garamond',serif;
+
   font-size:4rem;
-  color:#8c58b5;
-  margin-bottom:15px;
+
+  color:#8754af;
+
+  margin-bottom:10px;
 }
 
 .magic-sub{
-  margin-bottom:45px;
-  color:#735e80;
+
+  color:#715d7c;
+
+  margin-bottom:38px;
+
   font-size:1rem;
 }
 
 .magic-btn{
+
   border:none;
   outline:none;
   cursor:pointer;
+
   padding:24px 80px;
+
   border-radius:100px;
-  font-size:1.4rem;
+
+  font-size:1.35rem;
   font-weight:600;
-  background:linear-gradient(135deg,#ffb7db,#caa4ff);
+
   color:white;
 
-  box-shadow:
-  0 0 25px rgba(209,160,255,.6),
-  0 0 70px rgba(255,183,219,.5);
+  background:
+  linear-gradient(135deg,#ffb7dc,#c8a2ff);
 
-  transition:.45s ease;
+  box-shadow:
+  0 0 25px rgba(207,155,255,.6),
+  0 0 70px rgba(255,183,220,.5);
+
+  transition:.4s ease;
 }
 
 .magic-btn:hover{
-  transform:translateY(-7px) scale(1.05);
+
+  transform:translateY(-6px) scale(1.04);
 
   box-shadow:
-  0 0 40px rgba(209,160,255,.9),
-  0 0 100px rgba(255,183,219,.8);
+  0 0 40px rgba(207,155,255,.9),
+  0 0 100px rgba(255,183,220,.8);
 }
 
 /* GALLERY */
 
 .gallery-section{
+
   max-width:1450px;
+
   margin:auto;
-  padding:80px 20px 120px;
+
+  padding:70px 20px 120px;
+
   position:relative;
   z-index:2;
 }
 
 .gallery-title{
+
   text-align:center;
+
   font-family:'Cormorant Garamond',serif;
+
   font-size:4.5rem;
-  color:#8c58b5;
+
+  color:#8754af;
+
   margin-bottom:65px;
 }
 
@@ -228,25 +285,30 @@ body::before{
 }
 
 .gallery-item{
+
   break-inside:avoid;
+
   margin-bottom:22px;
+
   overflow:hidden;
+
   border-radius:24px;
+
   background:white;
 
   box-shadow:
   0 12px 35px rgba(0,0,0,.08);
-
-  transition:.4s ease;
 }
 
 .gallery-item img{
+
   width:100%;
+
   display:block;
+
   transition:transform .7s ease;
 
-  /* IMAGE LOAD IMPROVEMENT */
-  loading:lazy;
+  will-change:transform;
 }
 
 .gallery-item:hover img{
@@ -254,17 +316,22 @@ body::before{
 }
 
 .caption{
+
   padding:15px;
+
   color:#705d7d;
+
   font-size:.95rem;
 }
 
 /* MODAL */
 
 .modal{
+
   position:fixed;
   inset:0;
-  background:rgba(40,18,55,.45);
+
+  background:rgba(38,18,52,.45);
 
   backdrop-filter:blur(12px);
 
@@ -274,12 +341,14 @@ body::before{
 
   opacity:0;
   pointer-events:none;
+
   transition:.5s ease;
 
   z-index:999;
 }
 
 .modal.active{
+
   opacity:1;
   pointer-events:auto;
 }
@@ -289,7 +358,7 @@ body::before{
   width:92%;
   max-width:760px;
 
-  background:rgba(255,255,255,.92);
+  background:rgba(255,255,255,.93);
 
   border-radius:30px;
 
@@ -297,34 +366,47 @@ body::before{
 
   text-align:center;
 
+  border:1px solid rgba(255,255,255,.6);
+
   box-shadow:
   0 0 60px rgba(196,145,255,.4);
-
-  border:1px solid rgba(255,255,255,.6);
 }
 
 .modal-content h2{
+
   font-family:'Cormorant Garamond',serif;
+
   font-size:3.3rem;
-  margin-bottom:30px;
-  color:#8a56b3;
+
+  margin-bottom:28px;
+
+  color:#8754af;
 }
 
 #message{
+
   line-height:2;
-  color:#5d4969;
+
   font-size:1.1rem;
+
+  color:#5e4a68;
+
   min-height:180px;
 }
 
 .word{
+
   opacity:0;
+
   display:inline-block;
+
   transform:translateY(10px);
+
   animation:reveal .5s forwards;
 }
 
 @keyframes reveal{
+
   to{
     opacity:1;
     transform:translateY(0px);
@@ -332,22 +414,34 @@ body::before{
 }
 
 .close-btn{
+
   margin-top:35px;
+
   border:none;
+
   cursor:pointer;
+
   padding:14px 40px;
+
   border-radius:100px;
-  background:#cda6ff;
+
+  background:#cca3ff;
+
   color:white;
+
   font-size:1rem;
 }
 
 /* FOOTER */
 
 footer{
+
   text-align:center;
+
   padding:40px 20px 60px;
-  color:#786487;
+
+  color:#786486;
+
   position:relative;
   z-index:2;
 }
@@ -373,7 +467,6 @@ footer{
 
   .hero p{
     font-size:1rem;
-    line-height:1.8;
   }
 
   .magic-title{
@@ -381,7 +474,7 @@ footer{
   }
 
   .gallery-title{
-    font-size:3.2rem;
+    font-size:3.1rem;
   }
 
   .masonry{
@@ -394,46 +487,60 @@ footer{
   }
 
   .modal-content{
-    padding:40px 25px;
+    padding:40px 24px;
   }
 }
 
 </style>
+
 </head>
 
 <body>
 
+<!-- BACKGROUND SONG -->
+<!-- UPLOAD YOUR AUDIO AS: music.mp3 -->
+
+<audio id="bgMusic" autoplay loop>
+  <source src="music.mp3" type="audio/mp3">
+</audio>
+
+<!-- CLICK SOUND -->
+
+<audio id="clickSound">
+  <source src="https://cdn.pixabay.com/download/audio/2022/08/04/audio_2dde668d05.mp3?filename=fairy-message-notification-132630.mp3" type="audio/mp3">
+</audio>
+
 <!-- 25 BUTTERFLIES -->
 
-<div class="butterfly" style="left:2%; width:50px; animation-duration:18s; animation-delay:0s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:5%; width:70px; animation-duration:22s; animation-delay:2s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:9%; width:60px; animation-duration:17s; animation-delay:5s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:13%; width:80px; animation-duration:25s; animation-delay:1s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:17%; width:55px; animation-duration:20s; animation-delay:4s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:2%; width:65px; animation-duration:18s; animation-delay:0s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:5%; width:85px; animation-duration:24s; animation-delay:3s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:8%; width:70px; animation-duration:20s; animation-delay:6s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:12%; width:95px; animation-duration:27s; animation-delay:1s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:16%; width:60px; animation-duration:19s; animation-delay:5s;"><img src="butterfly.png"></div>
 
-<div class="butterfly" style="left:22%; width:75px; animation-duration:19s; animation-delay:3s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:27%; width:65px; animation-duration:23s; animation-delay:6s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:31%; width:85px; animation-duration:21s; animation-delay:2s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:35%; width:60px; animation-duration:18s; animation-delay:8s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:39%; width:90px; animation-duration:24s; animation-delay:1s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:20%; width:88px; animation-duration:23s; animation-delay:2s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:24%; width:75px; animation-duration:21s; animation-delay:7s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:28%; width:100px; animation-duration:26s; animation-delay:1s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:32%; width:68px; animation-duration:20s; animation-delay:4s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:36%; width:92px; animation-duration:25s; animation-delay:6s;"><img src="butterfly.png"></div>
 
-<div class="butterfly" style="left:43%; width:58px; animation-duration:19s; animation-delay:5s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:47%; width:78px; animation-duration:22s; animation-delay:3s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:51%; width:66px; animation-duration:20s; animation-delay:7s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:55%; width:84px; animation-duration:26s; animation-delay:0s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:59%; width:62px; animation-duration:18s; animation-delay:6s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:40%; width:72px; animation-duration:19s; animation-delay:3s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:44%; width:96px; animation-duration:24s; animation-delay:8s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:48%; width:78px; animation-duration:21s; animation-delay:2s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:52%; width:105px; animation-duration:28s; animation-delay:0s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:56%; width:66px; animation-duration:18s; animation-delay:5s;"><img src="butterfly.png"></div>
 
-<div class="butterfly" style="left:63%; width:76px; animation-duration:21s; animation-delay:4s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:67%; width:56px; animation-duration:23s; animation-delay:2s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:71%; width:88px; animation-duration:24s; animation-delay:5s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:75%; width:60px; animation-duration:17s; animation-delay:1s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:79%; width:82px; animation-duration:20s; animation-delay:7s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:60%; width:90px; animation-duration:23s; animation-delay:1s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:64%; width:74px; animation-duration:20s; animation-delay:7s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:68%; width:98px; animation-duration:26s; animation-delay:4s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:72%; width:69px; animation-duration:19s; animation-delay:2s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:76%; width:93px; animation-duration:25s; animation-delay:6s;"><img src="butterfly.png"></div>
 
-<div class="butterfly" style="left:83%; width:68px; animation-duration:22s; animation-delay:3s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:87%; width:92px; animation-duration:25s; animation-delay:6s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:91%; width:55px; animation-duration:18s; animation-delay:0s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:95%; width:74px; animation-duration:23s; animation-delay:4s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:98%; width:64px; animation-duration:19s; animation-delay:2s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:80%; width:76px; animation-duration:21s; animation-delay:3s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:84%; width:102px; animation-duration:27s; animation-delay:8s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:88%; width:70px; animation-duration:20s; animation-delay:1s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:92%; width:96px; animation-duration:24s; animation-delay:5s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:96%; width:82px; animation-duration:22s; animation-delay:2s;"><img src="butterfly.png"></div>
 
 <!-- HERO -->
 
@@ -452,10 +559,12 @@ Every moment with you feels soft, peaceful, magical, and unforgettable in ways w
 
 <section class="magic-section">
 
-<h2 class="magic-title">A little surprise for you ✨</h2>
+<h2 class="magic-title">
+A little surprise for you ✨
+</h2>
 
 <p class="magic-sub">
-Something tiny, soft, and special made only for you 💜
+Something tiny, dreamy, and special made for you 💜
 </p>
 
 <button class="magic-btn" onclick="openMagic()">
@@ -468,7 +577,9 @@ Click me 🦋
 
 <section class="gallery-section">
 
-<h2 class="gallery-title">Our memories</h2>
+<h2 class="gallery-title">
+Our memories
+</h2>
 
 <div class="masonry">
 
@@ -479,22 +590,22 @@ Click me 🦋
 
 <div class="gallery-item">
 <img src="images/photo2.jpg" loading="lazy">
-<div class="caption">The calm in my chaos 💜</div>
+<div class="caption">Soft little memories 🦋</div>
 </div>
 
 <div class="gallery-item">
 <img src="images/photo3.jpg" loading="lazy">
-<div class="caption">Beautiful memories forever 🦋</div>
+<div class="caption">Beautiful moments forever 💜</div>
 </div>
 
 <div class="gallery-item">
 <img src="images/photo4.jpg" loading="lazy">
-<div class="caption">Every moment feels magical 🌸</div>
+<div class="caption">The calm in my chaos 🌸</div>
 </div>
 
 <div class="gallery-item">
 <img src="images/photo5.jpg" loading="lazy">
-<div class="caption">Soft little memories 💫</div>
+<div class="caption">Every moment feels magical 💫</div>
 </div>
 
 <div class="gallery-item">
@@ -528,13 +639,33 @@ Close
 Made for Bharathi Priya 🦋
 </footer>
 
-<!-- SOFT MELODY -->
-
-<audio id="melody">
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=soft-piano-logo-100-bpm-121529.mp3" type="audio/mp3">
-</audio>
-
 <script>
+
+/* FORCE AUTOPLAY */
+
+window.addEventListener("load", () => {
+
+  const music = document.getElementById("bgMusic");
+
+  music.volume = 0.7;
+
+  const playPromise = music.play();
+
+  if(playPromise !== undefined){
+
+    playPromise.catch(() => {
+
+      document.addEventListener("click", () => {
+        music.play();
+      }, { once:true });
+
+    });
+
+  }
+
+});
+
+/* SECRET MESSAGE */
 
 const hiddenMessage =
 "No matter how many people come and go in life, you will always remain one of the most precious parts of mine. Thank you for being my happiness, my safe place, my favourite person, and the most beautiful soul I have ever met. 🦋";
@@ -543,11 +674,11 @@ function openMagic(){
 
   document.getElementById("modal").classList.add("active");
 
-  document.getElementById("melody").play();
+  document.getElementById("clickSound").play();
 
   confetti({
-    particleCount:220,
-    spread:130,
+    particleCount:240,
+    spread:140,
     startVelocity:35,
     scalar:1.1,
     origin:{ y:0.6 }
