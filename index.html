@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Bharathi Priya 🦋</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Framer Motion -->
+  <script src="https://unpkg.com/framer-motion@11.0.24/dist/framer-motion.js"></script>
+
+  <!-- Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      overflow-x:hidden;
+      background:
+        radial-gradient(circle at top left,#ffd6ec 0%,transparent 30%),
+        radial-gradient(circle at bottom right,#d9c6ff 0%,transparent 35%),
+        linear-gradient(135deg,#fff6fb,#f5edff);
+      color:#4d3b56;
+      min-height:100vh;
+      position:relative;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:
+      radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px);
+      background-size:40px 40px;
+      opacity:.4;
+      z-index:-2;
+      animation: sparkle 12s linear infinite;
+    }
+
+    @keyframes sparkle{
+      from{transform:translateY(0px);}
+      to{transform:translateY(-40px);}
+    }
+
+    /* Hero */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+      position:relative;
+    }
+
+    .hero h1{
+      font-family:'Cormorant Garamond',serif;
+      font-size:5rem;
+      color:#7d4fa0;
+      margin-bottom:20px;
+      text-shadow:0 0 25px rgba(177,126,255,.3);
+      animation: fadeUp 1.2s ease;
+    }
+
+    .hero p{
+      max-width:700px;
+      font-size:1.2rem;
+      line-height:1.8;
+      color:#6b5873;
+      animation: fadeUp 1.6s ease;
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(40px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0px);
+      }
+    }
+
+    /* Floating butterflies */
+
+    .butterfly{
+      position:fixed;
+      width:70px;
+      z-index:2;
+      pointer-events:none;
+      animation: floatButterfly linear infinite;
+      opacity:.9;
+      filter:drop-shadow(0 0 10px rgba(255,255,255,.6));
+    }
+
+    .butterfly img{
+      width:100%;
+      animation: flap .8s infinite ease-in-out;
+      transform-origin:center;
+    }
+
+    @keyframes flap{
+      0%{transform:scaleX(1);}
+      50%{transform:scaleX(.75) rotate(2deg);}
+      100%{transform:scaleX(1);}
+    }
+
+    @keyframes floatButterfly{
+      from{
+        transform:translateY(110vh) translateX(0px) rotate(0deg);
+      }
+      to{
+        transform:translateY(-120vh) translateX(120px) rotate(10deg);
+      }
+    }
+
+    /* Button Section */
+
+    .magic-section{
+      padding:120px 20px;
+      text-align:center;
+    }
+
+    .magic-title{
+      font-family:'Cormorant Garamond',serif;
+      font-size:3rem;
+      margin-bottom:40px;
+      color:#8753b3;
+    }
+
+    .magic-btn{
+      border:none;
+      outline:none;
+      cursor:pointer;
+      padding:24px 70px;
+      border-radius:100px;
+      font-size:1.4rem;
+      font-weight:600;
+      background:linear-gradient(135deg,#ffb6d9,#cfa5ff);
+      color:white;
+      box-shadow:
+      0 0 20px rgba(210,157,255,.5),
+      0 0 50px rgba(255,182,217,.4);
+      transition:.4s;
+    }
+
+    .magic-btn:hover{
+      transform:translateY(-6px) scale(1.04);
+      box-shadow:
+      0 0 35px rgba(210,157,255,.8),
+      0 0 80px rgba(255,182,217,.6);
+    }
+
+    /* Modal */
+
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(35,15,50,.45);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      opacity:0;
+      pointer-events:none;
+      transition:.5s;
+      z-index:999;
+      backdrop-filter:blur(10px);
+    }
+
+    .modal.active{
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .modal-content{
+      width:90%;
+      max-width:700px;
+      background:rgba(255,255,255,.9);
+      border:1px solid rgba(255,255,255,.6);
+      border-radius:30px;
+      padding:50px;
+      text-align:center;
+      box-shadow:0 0 60px rgba(177,126,255,.35);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .modal-content h2{
+      font-family:'Cormorant Garamond',serif;
+      font-size:3rem;
+      margin-bottom:25px;
+      color:#7a49a0;
+    }
+
+    #message{
+      font-size:1.15rem;
+      line-height:2;
+      color:#5d4a68;
+      min-height:160px;
+    }
+
+    .word{
+      opacity:0;
+      display:inline-block;
+      margin-right:6px;
+      animation: reveal .5s forwards;
+    }
+
+    @keyframes reveal{
+      to{
+        opacity:1;
+        transform:translateY(0px);
+      }
+    }
+
+    .close-btn{
+      margin-top:30px;
+      border:none;
+      padding:14px 35px;
+      border-radius:50px;
+      cursor:pointer;
+      background:#cda2ff;
+      color:white;
+      font-size:1rem;
+    }
+
+    /* Gallery */
+
+    .gallery-section{
+      padding:120px 20px;
+      max-width:1400px;
+      margin:auto;
+    }
+
+    .gallery-title{
+      text-align:center;
+      font-family:'Cormorant Garamond',serif;
+      font-size:4rem;
+      margin-bottom:70px;
+      color:#8753b3;
+    }
+
+    .masonry{
+      column-count:3;
+      column-gap:20px;
+    }
+
+    .gallery-item{
+      break-inside:avoid;
+      margin-bottom:20px;
+      position:relative;
+      overflow:hidden;
+      border-radius:24px;
+      background:white;
+      box-shadow:0 10px 35px rgba(0,0,0,.08);
+    }
+
+    .gallery-item img{
+      width:100%;
+      display:block;
+      transition:transform .6s ease;
+    }
+
+    .gallery-item:hover img{
+      transform:scale(1.08);
+    }
+
+    .caption{
+      padding:14px;
+      font-size:.95rem;
+      color:#6a5575;
+      background:white;
+    }
+
+    /* Footer */
+
+    footer{
+      padding:50px 20px;
+      text-align:center;
+      color:#7a6588;
+      font-size:.95rem;
+    }
+
+    /* Responsive */
+
+    @media(max-width:900px){
+      .hero h1{
+        font-size:3.5rem;
+      }
+
+      .masonry{
+        column-count:2;
+      }
+    }
+
+    @media(max-width:600px){
+
+      .hero h1{
+        font-size:2.7rem;
+      }
+
+      .hero p{
+        font-size:1rem;
+      }
+
+      .masonry{
+        column-count:1;
+      }
+
+      .modal-content{
+        padding:35px 25px;
+      }
+
+      .magic-btn{
+        width:100%;
+        max-width:320px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- FLOATING BUTTERFLIES -->
+  <!-- IMPORTANT:
+       Replace butterfly.png with your uploaded GitHub butterfly image path
+       Example:
+       https://raw.githubusercontent.com/USERNAME/REPO/main/butterfly.png
+  -->
+
+  <div class="butterfly" style="left:5%; animation-duration:16s;">
+    <img src="butterfly.png">
+  </div>
+
+  <div class="butterfly" style="left:25%; width:90px; animation-duration:20s;">
+    <img src="butterfly.png">
+  </div>
+
+  <div class="butterfly" style="left:60%; width:75px; animation-duration:18s;">
+    <img src="butterfly.png">
+  </div>
+
+  <div class="butterfly" style="left:80%; width:85px; animation-duration:22s;">
+    <img src="butterfly.png">
+  </div>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <h1>For you, Bharathi Priya 🦋</h1>
+
+    <p>
+      My favourite person, my comfort place, and the best bestfriend
+      I could ever ask for.  
+      Every moment with you feels soft, peaceful, magical,
+      and unforgettable in ways words can never fully explain.
+    </p>
+
+  </section>
+
+  <!-- MAGIC BUTTON -->
+
+  <section class="magic-section">
+
+    <h2 class="magic-title">A little surprise for you ✨</h2>
+
+    <button class="magic-btn" onclick="openMagic()">
+      Click me 🦋
+    </button>
+
+  </section>
+
+  <!-- GALLERY -->
+
+  <section class="gallery-section">
+
+    <h2 class="gallery-title">Our memories</h2>
+
+    <div class="masonry">
+
+      <!-- Replace image paths with your own images -->
+
+      <div class="gallery-item">
+        <img src="images/photo1.jpg">
+        <div class="caption">One of my favourite smiles ✨</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/photo2.jpg">
+        <div class="caption">Moments that feel timeless 🦋</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/photo3.jpg">
+        <div class="caption">The calm in my chaos 💜</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/photo4.jpg">
+        <div class="caption">Soft memories forever 🌸</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/photo5.jpg">
+        <div class="caption">Every picture feels special 💫</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/photo6.jpg">
+        <div class="caption">My favourite human 💕</div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- MODAL -->
+
+  <div class="modal" id="modal">
+
+    <div class="modal-content">
+
+      <h2>For Bharathi 💜</h2>
+
+      <p id="message"></p>
+
+      <button class="close-btn" onclick="closeModal()">
+        Close
+      </button>
+
+    </div>
+
+  </div>
+
+  <footer>
+    Made with love for Bharathi Priya 🦋
+  </footer>
+
+  <!-- SOFT CHIME SOUND -->
+  <audio id="chime">
+    <source src="https://assets.mixkit.co/active_storage/sfx/212/212-preview.mp3" type="audio/mp3">
+  </audio>
+
+  <script>
+
+    const hiddenMessage =
+    "No matter how many people come and go in life, you will always remain one of the most precious parts of mine. Thank you for being my happiness, my safe place, my favourite person, and the most beautiful soul I have ever met. 🦋";
+
+    function openMagic(){
+
+      // Open modal
+      document.getElementById("modal").classList.add("active");
+
+      // Play sound
+      document.getElementById("chime").play();
+
+      // Confetti
+      confetti({
+        particleCount:180,
+        spread:120,
+        origin:{ y:0.6 }
+      });
+
+      // Word by word animation
+      const messageBox = document.getElementById("message");
+      messageBox.innerHTML = "";
+
+      const words = hiddenMessage.split(" ");
+
+      words.forEach((word,index)=>{
+
+        const span = document.createElement("span");
+
+        span.className = "word";
+        span.style.animationDelay = `${index * 0.12}s`;
+        span.innerText = word + " ";
+
+        messageBox.appendChild(span);
+
+      });
+
+    }
+
+    function closeModal(){
+      document.getElementById("modal").classList.remove("active");
+    }
+
+  </script>
+
+</body>
+</html>
