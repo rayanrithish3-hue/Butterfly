@@ -27,7 +27,9 @@ html{
 }
 
 body{
+
   overflow-x:hidden;
+
   font-family:'Poppins',sans-serif;
 
   background:
@@ -40,7 +42,7 @@ body{
   color:#5e4867;
 }
 
-/* PRELOADER */
+/* INTRO */
 
 #intro{
 
@@ -61,11 +63,13 @@ body{
 }
 
 #intro.hide{
+
   opacity:0;
   visibility:hidden;
 }
 
 .blur-bg{
+
   position:absolute;
   inset:0;
 
@@ -135,8 +139,6 @@ body{
 
   color:#775f83;
 
-  letter-spacing:.5px;
-
   position:relative;
 
   z-index:3;
@@ -159,36 +161,126 @@ body{
   }
 }
 
-/* DREAMY PARTICLES */
+/* PASSWORD SCREEN */
 
-body::before{
-
-  content:"";
+#passwordScreen{
 
   position:fixed;
   inset:0;
 
-  background-image:
-  radial-gradient(rgba(255,255,255,.75) 1px, transparent 1px);
+  display:none;
 
-  background-size:40px 40px;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
 
-  opacity:.35;
+  z-index:99998;
 
-  animation:sparkle 12s linear infinite;
+  backdrop-filter:blur(18px);
 
-  z-index:-2;
+  background:rgba(255,255,255,.12);
 }
 
-@keyframes sparkle{
+.password-box{
 
-  from{
-    transform:translateY(0px);
-  }
+  width:320px;
 
-  to{
-    transform:translateY(-40px);
-  }
+  padding:35px 25px;
+
+  border-radius:30px;
+
+  background:rgba(255,255,255,.18);
+
+  border:1px solid rgba(255,255,255,.35);
+
+  backdrop-filter:blur(18px);
+
+  box-shadow:
+  0 0 40px rgba(195,145,255,.3);
+
+  text-align:center;
+}
+
+.password-title{
+
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:2.7rem;
+
+  color:#8755af;
+
+  margin-bottom:10px;
+}
+
+.password-sub{
+
+  color:#705d7d;
+
+  margin-bottom:28px;
+
+  font-size:.95rem;
+}
+
+.pin-display{
+
+  height:60px;
+
+  border-radius:18px;
+
+  background:rgba(255,255,255,.18);
+
+  border:1px solid rgba(255,255,255,.3);
+
+  margin-bottom:25px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:2rem;
+
+  letter-spacing:10px;
+
+  color:#8755af;
+}
+
+.keypad{
+
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:15px;
+}
+
+.key{
+
+  height:65px;
+
+  border:none;
+
+  border-radius:20px;
+
+  background:rgba(255,255,255,.18);
+
+  backdrop-filter:blur(12px);
+
+  border:1px solid rgba(255,255,255,.3);
+
+  color:#8755af;
+
+  font-size:1.3rem;
+
+  cursor:pointer;
+
+  transition:.25s ease;
+}
+
+.key:hover{
+
+  transform:scale(1.06);
+
+  background:rgba(255,255,255,.28);
 }
 
 /* BUTTERFLIES */
@@ -305,11 +397,6 @@ body::before{
   color:#8755af;
 
   margin-bottom:18px;
-
-  text-shadow:
-  0 0 20px rgba(190,145,255,.5);
-
-  animation:fadeUp 1.2s ease;
 }
 
 .hero p{
@@ -321,21 +408,6 @@ body::before{
   font-size:1.12rem;
 
   color:#6e5a79;
-
-  animation:fadeUp 1.6s ease;
-}
-
-@keyframes fadeUp{
-
-  from{
-    opacity:0;
-    transform:translateY(40px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0px);
-  }
 }
 
 /* MAGIC */
@@ -396,10 +468,6 @@ body::before{
 .magic-btn:hover{
 
   transform:translateY(-6px) scale(1.04);
-
-  box-shadow:
-  0 0 40px rgba(205,155,255,.9),
-  0 0 100px rgba(255,184,220,.8);
 }
 
 /* GALLERY */
@@ -515,11 +583,6 @@ body::before{
   padding:55px 35px;
 
   text-align:center;
-
-  border:1px solid rgba(255,255,255,.6);
-
-  box-shadow:
-  0 0 60px rgba(196,145,255,.4);
 }
 
 .modal-content h2{
@@ -582,17 +645,6 @@ body::before{
   font-size:1rem;
 }
 
-/* FOOTER */
-
-footer{
-
-  text-align:center;
-
-  padding:40px 20px 60px;
-
-  color:#786486;
-}
-
 /* MOBILE */
 
 @media(max-width:950px){
@@ -612,29 +664,16 @@ footer{
     font-size:2.9rem;
   }
 
-  .hero p{
-    font-size:1rem;
-  }
-
-  .magic-title{
-    font-size:3rem;
-  }
-
-  .gallery-title{
-    font-size:3rem;
-  }
-
   .masonry{
     column-count:1;
   }
 
-  .magic-btn{
-    width:100%;
-    max-width:320px;
-  }
-
   .center-butterfly{
     width:140px;
+  }
+
+  .password-box{
+    width:92%;
   }
 }
 
@@ -645,13 +684,13 @@ footer{
 <body>
 
 <!-- MUSIC -->
-<!-- Upload your audio as music.mp3 -->
+<!-- Upload as music.mp3 -->
 
 <audio id="bgMusic" loop>
   <source src="music.mp3" type="audio/mp3">
 </audio>
 
-<!-- INTRO SCREEN -->
+<!-- INTRO -->
 
 <div id="intro">
 
@@ -667,28 +706,59 @@ footer{
 
 </div>
 
-<!-- FLOATING BUTTERFLIES -->
+<!-- PASSWORD SCREEN -->
 
-<div class="butterfly" style="left:2%; width:65px; animation-duration:18s; animation-delay:0s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:7%; width:90px; animation-duration:25s; animation-delay:3s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:12%; width:72px; animation-duration:20s; animation-delay:6s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:18%; width:100px; animation-duration:28s; animation-delay:1s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:24%; width:68px; animation-duration:19s; animation-delay:5s;"><img src="butterfly.png"></div>
+<div id="passwordScreen">
 
-<div class="butterfly" style="left:30%; width:92px; animation-duration:24s; animation-delay:2s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:36%; width:74px; animation-duration:21s; animation-delay:7s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:42%; width:104px; animation-duration:27s; animation-delay:1s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:48%; width:70px; animation-duration:20s; animation-delay:4s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:54%; width:96px; animation-duration:25s; animation-delay:6s;"><img src="butterfly.png"></div>
+<div class="password-box">
 
-<div class="butterfly" style="left:60%; width:76px; animation-duration:19s; animation-delay:3s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:66%; width:106px; animation-duration:28s; animation-delay:8s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:72%; width:80px; animation-duration:21s; animation-delay:2s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:78%; width:98px; animation-duration:26s; animation-delay:0s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:84%; width:72px; animation-duration:18s; animation-delay:5s;"><img src="butterfly.png"></div>
+<div class="password-title">
+Put Password
+</div>
 
-<div class="butterfly" style="left:90%; width:92px; animation-duration:23s; animation-delay:1s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:96%; width:76px; animation-duration:20s; animation-delay:7s;"><img src="butterfly.png"></div>
+<div class="password-sub">
+Enter the secret pin 💜
+</div>
+
+<div class="pin-display" id="pinDisplay"></div>
+
+<div class="keypad">
+
+<button class="key" onclick="addNumber('1')">1</button>
+<button class="key" onclick="addNumber('2')">2</button>
+<button class="key" onclick="addNumber('3')">3</button>
+
+<button class="key" onclick="addNumber('4')">4</button>
+<button class="key" onclick="addNumber('5')">5</button>
+<button class="key" onclick="addNumber('6')">6</button>
+
+<button class="key" onclick="addNumber('7')">7</button>
+<button class="key" onclick="addNumber('8')">8</button>
+<button class="key" onclick="addNumber('9')">9</button>
+
+<button class="key" onclick="clearPin()">✕</button>
+<button class="key" onclick="addNumber('0')">0</button>
+<button class="key" onclick="checkPin()">✓</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- BUTTERFLIES -->
+
+<div class="butterfly" style="left:2%; width:65px; animation-duration:18s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:12%; width:90px; animation-duration:25s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:22%; width:72px; animation-duration:20s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:32%; width:100px; animation-duration:28s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:42%; width:68px; animation-duration:19s;"><img src="butterfly.png"></div>
+
+<div class="butterfly" style="left:52%; width:92px; animation-duration:24s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:62%; width:74px; animation-duration:21s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:72%; width:104px; animation-duration:27s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:82%; width:70px; animation-duration:20s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:92%; width:96px; animation-duration:25s;"><img src="butterfly.png"></div>
 
 <!-- MAIN CONTENT -->
 
@@ -696,10 +766,10 @@ footer{
 
 <section class="hero">
 
-<h1>For you, Bharathi Priya 🦋</h1>
+<h1>This is For, Bharathi Priya 🦋</h1>
 
 <p>
-My favourite person, my comfort place, and the bestest bestfriend I could ever ask for.
+My favourite person, my comfort place, and the best bestfriend I could ever ask for.
 Every moment with you feels soft, peaceful, magical, and unforgettable in ways words can never fully explain.
 </p>
 
@@ -779,25 +849,19 @@ Close
 
 </div>
 
-<footer>
-Made for Bharathi Priya 🦋
-</footer>
-
 </div>
 
 <script>
 
-/* INTRO */
+let enteredPin = "";
+
+/* BUTTERFLY TOUCH */
 
 const touchButterfly = document.getElementById("touchButterfly");
 
 touchButterfly.addEventListener("click", () => {
 
-  /* FLY AWAY */
-
   touchButterfly.classList.add("fly-away");
-
-  /* START MUSIC */
 
   const music = document.getElementById("bgMusic");
 
@@ -805,25 +869,70 @@ touchButterfly.addEventListener("click", () => {
 
   music.play();
 
-  /* SHOW ALL BUTTERFLIES */
-
   document.querySelectorAll(".butterfly").forEach((b) => {
-
     b.classList.add("active");
-
   });
-
-  /* SHOW CONTENT */
 
   setTimeout(() => {
 
-    document.getElementById("intro").classList.add("hide");
+    document.getElementById("intro").style.display = "none";
+
+    document.getElementById("passwordScreen").style.display = "flex";
+
+  }, 1200);
+
+});
+
+/* PIN FUNCTIONS */
+
+function addNumber(num){
+
+  if(enteredPin.length < 4){
+
+    enteredPin += num;
+
+    updateDisplay();
+
+  }
+
+}
+
+function clearPin(){
+
+  enteredPin = "";
+
+  updateDisplay();
+
+}
+
+function updateDisplay(){
+
+  document.getElementById("pinDisplay").innerHTML =
+  "•".repeat(enteredPin.length);
+
+}
+
+function checkPin(){
+
+  if(enteredPin === "5689"){
+
+    document.getElementById("passwordScreen").style.display = "none";
 
     document.getElementById("mainContent").classList.add("show");
 
-  }, 1400);
+  }
 
-});
+  else{
+
+    enteredPin = "";
+
+    updateDisplay();
+
+    alert("Wrong Password 🥺");
+
+  }
+
+}
 
 /* SECRET MESSAGE */
 
