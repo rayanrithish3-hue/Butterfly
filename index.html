@@ -59,13 +59,7 @@ body{
 
   z-index:99999;
 
-  transition:1.5s ease;
-}
-
-#intro.hide{
-
-  opacity:0;
-  visibility:hidden;
+  transition:1.2s ease;
 }
 
 .blur-bg{
@@ -90,13 +84,13 @@ body{
 
   cursor:pointer;
 
-  transition:1s ease;
+  transition:1.2s ease;
 }
 
 .center-butterfly.fly-away{
 
   transform:
-  translate(500px,-700px)
+  translate(450px,-700px)
   rotate(35deg)
   scale(.5);
 
@@ -123,7 +117,7 @@ body{
   }
 
   50%{
-    transform:scaleX(.7) rotate(3deg);
+    transform:scaleX(.72) rotate(3deg);
   }
 
   100%{
@@ -178,7 +172,7 @@ body{
 
   backdrop-filter:blur(18px);
 
-  background:rgba(255,255,255,.12);
+  background:rgba(255,255,255,.15);
 }
 
 .password-box{
@@ -263,8 +257,6 @@ body{
 
   background:rgba(255,255,255,.18);
 
-  backdrop-filter:blur(12px);
-
   border:1px solid rgba(255,255,255,.3);
 
   color:#8755af;
@@ -283,7 +275,7 @@ body{
   background:rgba(255,255,255,.28);
 }
 
-/* PARTICLES */
+/* BACKGROUND PARTICLES */
 
 body::before{
 
@@ -460,7 +452,7 @@ body::before{
   color:#6e5a79;
 }
 
-/* MAGIC */
+/* MAGIC SECTION */
 
 .magic-section{
 
@@ -656,9 +648,6 @@ body::before{
   padding:25px;
 
   transition:.4s ease;
-
-  box-shadow:
-  0 0 35px rgba(195,145,255,.18);
 }
 
 .letter-card:hover{
@@ -719,7 +708,7 @@ body::before{
   border-radius:30px;
 
   background:
-  rgba(255,255,255,.92);
+  rgba(255,255,255,.95);
 
   text-align:center;
 
@@ -741,7 +730,8 @@ body::before{
   margin-bottom:22px;
 }
 
-#message{
+#message,
+#letterText{
 
   line-height:2;
 
@@ -760,6 +750,25 @@ body::before{
   min-height:120px;
 
   padding:0 5px;
+}
+
+.word{
+
+  opacity:0;
+
+  display:inline-block;
+
+  transform:translateY(12px);
+
+  animation:reveal .45s forwards;
+}
+
+@keyframes reveal{
+
+  to{
+    opacity:1;
+    transform:translateY(0px);
+  }
 }
 
 .close-btn,
@@ -827,6 +836,16 @@ footer{
   .letters-title{
     font-size:3rem;
   }
+
+  .modal-content,
+  .letter-box{
+    padding:35px 20px;
+  }
+
+  .modal-content h2,
+  #letterTitle{
+    font-size:2.3rem;
+  }
 }
 
 </style>
@@ -836,7 +855,7 @@ footer{
 <body>
 
 <!-- MUSIC -->
-<!-- Upload your song as music.mp3 -->
+<!-- upload as music.mp3 -->
 
 <audio id="bgMusic" loop>
   <source src="music.mp3" type="audio/mp3">
@@ -1071,21 +1090,13 @@ document.getElementById("bgMusic");
 
 touchButterfly.onclick = function(){
 
-  /* DISABLE MULTIPLE CLICKS */
-
   touchButterfly.style.pointerEvents = "none";
 
-  /* BUTTERFLY FLY */
-
   touchButterfly.classList.add("fly-away");
-
-  /* START MUSIC */
 
   bgMusic.volume = 0.75;
 
   bgMusic.play();
-
-  /* HIDE INTRO */
 
   setTimeout(() => {
 
@@ -1094,8 +1105,6 @@ touchButterfly.onclick = function(){
     intro.style.visibility = "hidden";
 
   }, 400);
-
-  /* SHOW PASSWORD */
 
   setTimeout(() => {
 
@@ -1156,13 +1165,16 @@ function checkPin(){
 /* SECRET MESSAGE */
 
 const hiddenMessage =
-"No matter how many people come and go in life, you will always remain one of the not one of the your the most precious parts of mine. Thank you for being my happiness, my favourite person, and the most beautiful soul I have ever met. 🦋";
+"No matter how many people come and go in life, you will always remain one of the not one of the you are the most precious parts of mine. Thank you for being my happiness, my safe place, my favourite person, and the most beautiful soul I have ever met. 🦋";
+
+/* OPEN MAGIC */
 
 function openMagic(){
 
-  document
-  .getElementById("modal")
-  .classList.add("active");
+  const modal =
+  document.getElementById("modal");
+
+  modal.classList.add("active");
 
   confetti({
     particleCount:240,
@@ -1185,14 +1197,7 @@ function openMagic(){
     const span =
     document.createElement("span");
 
-    span.className = "word";
-
-    span.style.opacity = "0";
-
-    span.style.display = "inline-block";
-
-    span.style.animation =
-    `reveal .4s forwards`;
+    span.classList.add("word");
 
     span.style.animationDelay =
     `${index * 0.08}s`;
@@ -1204,6 +1209,8 @@ function openMagic(){
   });
 
 }
+
+/* CLOSE MODAL */
 
 function closeModal(){
 
@@ -1225,7 +1232,7 @@ const letters = {
   happy: {
     title: "For your happiest moments ✨",
     text:
-    "Your smile makes everything feel lite. Always keep Smile on your Face. Don't forget to Smile."
+    "Your smile makes everything feel lite. Always Keep Smile on your Face. Don't forget to Smile."
   }
 
 };
@@ -1240,11 +1247,13 @@ function openLetter(type){
 
   document
   .getElementById("letterTitle")
-  .innerText = letters[type].title;
+  .innerText =
+  letters[type].title;
 
   document
   .getElementById("letterText")
-  .innerText = letters[type].text;
+  .innerText =
+  letters[type].text;
 }
 
 /* CLOSE LETTER */
