@@ -725,6 +725,8 @@ body::before{
 
   box-shadow:
   0 0 60px rgba(195,145,255,.35);
+
+  overflow:hidden;
 }
 
 .modal-content h2,
@@ -739,14 +741,25 @@ body::before{
   margin-bottom:22px;
 }
 
-#message,
-#letterText{
+#message{
 
-  line-height:1.9;
+  line-height:2;
 
   color:#695675;
 
-  font-size:1.08rem;
+  font-size:1.02rem;
+
+  max-width:100%;
+
+  word-wrap:break-word;
+
+  overflow-wrap:break-word;
+
+  white-space:normal;
+
+  min-height:120px;
+
+  padding:0 5px;
 }
 
 .close-btn,
@@ -1174,8 +1187,15 @@ function openMagic(){
 
     span.className = "word";
 
+    span.style.opacity = "0";
+
+    span.style.display = "inline-block";
+
+    span.style.animation =
+    `reveal .4s forwards`;
+
     span.style.animationDelay =
-    `${index * 0.09}s`;
+    `${index * 0.08}s`;
 
     span.innerHTML = word + "&nbsp;";
 
