@@ -1200,216 +1200,9 @@ footer{
 
 <div class="moon" id="moon"></div>
 
-<!-- ========================= -->
-<!-- REPLACE THIS FULL SECTION -->
-<!-- ========================= -->
-
-<div class="moon" id="moon"></div>
-
 <div class="moon-quote" id="moonQuote">
 🌙 Some Nights Moon is my only companion listening without any Judgement
 </div>
-
-<!-- ========================= -->
-<!-- PASTE THIS INSIDE <style> -->
-<!-- ========================= -->
-
-<style>
-
-/* PERFECT MOON */
-
-.moon{
-
-  position:fixed;
-
-  top:60px;
-  right:55px;
-
-  width:95px;
-  height:95px;
-
-  border-radius:50%;
-
-  background:
-  radial-gradient(circle at top left,
-  #ffffff,
-  #dce2ff);
-
-  box-shadow:
-  0 0 35px rgba(255,255,255,.45),
-  0 0 90px rgba(180,190,255,.28);
-
-  z-index:50;
-
-  display:none;
-
-  cursor:pointer;
-
-  transition:
-  transform .5s ease,
-  background .8s ease,
-  box-shadow .8s ease;
-}
-
-body.night .moon{
-  display:block;
-}
-
-/* ACTIVE WARM GLOW */
-
-.moon.active{
-
-  background:
-  radial-gradient(circle at top left,
-  #fff6cf,
-  #ffcf7d);
-
-  box-shadow:
-  0 0 60px rgba(255,220,140,.95),
-  0 0 140px rgba(255,200,90,.55);
-
-  transform:
-  scale(1.12);
-}
-
-/* CLOUD QUOTE */
-
-.moon-quote{
-
-  position:fixed;
-
-  top:175px;
-  right:20px;
-
-  width:320px;
-
-  padding:22px 24px;
-
-  border-radius:35px;
-
-  background:
-  rgba(255,255,255,.16);
-
-  backdrop-filter:blur(18px);
-
-  border:
-  1px solid rgba(255,255,255,.18);
-
-  color:#fffdf8;
-
-  line-height:1.9;
-
-  font-size:.96rem;
-
-  opacity:0;
-
-  visibility:hidden;
-
-  transform:
-  translateY(18px)
-  scale(.92);
-
-  transition:
-  opacity .7s ease,
-  transform .7s ease,
-  visibility .7s ease;
-
-  z-index:100;
-
-  box-shadow:
-  0 0 35px rgba(255,255,255,.08);
-}
-
-.moon-quote.show{
-
-  opacity:1;
-
-  visibility:visible;
-
-  transform:
-  translateY(0px)
-  scale(1);
-}
-
-/* MOBILE */
-
-@media(max-width:600px){
-
-  .moon{
-
-    width:70px;
-    height:70px;
-
-    top:35px;
-    right:20px;
-  }
-
-  .moon-quote{
-
-    width:85%;
-
-    right:7.5%;
-
-    top:120px;
-
-    font-size:.9rem;
-  }
-}
-
-</style>
-
-<!-- ========================= -->
-<!-- REPLACE OLD MOON JS WITH THIS -->
-<!-- ========================= -->
-
-<script>
-
-/* PERFECT MOON INTERACTION */
-
-const moon =
-document.getElementById("moon");
-
-const moonQuote =
-document.getElementById("moonQuote");
-
-moon.addEventListener("click", () => {
-
-  /* RESET ANIMATION */
-
-  moon.classList.remove("active");
-
-  void moon.offsetWidth;
-
-  moon.classList.add("active");
-
-  moonQuote.classList.remove("show");
-
-  void moonQuote.offsetWidth;
-
-  moonQuote.classList.add("show");
-
-  /* BURST EFFECT */
-
-  confetti({
-
-    particleCount:55,
-
-    spread:100,
-
-    scalar:.9,
-
-    startVelocity:25,
-
-    origin:{
-      x:.90,
-      y:.12
-    }
-
-  });
-
-});
-
-</script>
 
 <audio id="bgMusic" loop>
   <source src="music.mp3" type="audio/mp3">
@@ -1505,14 +1298,14 @@ Click me 🦋
 <section class="gallery-section">
 
 <h2 class="gallery-title">
-Our memories
+Memories 💌
 </h2>
 
 <div class="masonry">
 
 <div class="gallery-item">
 <img src="images/photo1.jpg">
-<div class="caption">One of my favourite smile ✨</div>
+<div class="caption">One of my favourite smiles ✨</div>
 </div>
 
 <div class="gallery-item">
@@ -1788,7 +1581,7 @@ const letters = {
   happy: {
     title: "For your happiest moments ✨",
     text:
-    "Your smile makes everything feel lite. Always Keep Smile on your Face. Don't Forget to smile."
+    "Your smile makes everything feels lite. Always Keep Smile on your Face. Don't Forget to Smile."
   }
 
 };
