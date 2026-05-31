@@ -42,6 +42,66 @@ body{
   color:#5e4867;
 }
 
+/* NETFLIX INTRO */
+
+#netflixIntro{
+
+  position:fixed;
+  inset:0;
+
+  background:black;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  z-index:999999;
+
+  animation:introHide 1.2s forwards;
+
+  animation-delay:2.8s;
+}
+
+.netflix-logo{
+
+  font-size:10rem;
+
+  font-weight:700;
+
+  color:#ff2d75;
+
+  font-family:'Cormorant Garamond',serif;
+
+  text-shadow:
+  0 0 30px rgba(255,45,117,.9),
+  0 0 80px rgba(255,45,117,.5);
+
+  animation:netflixGlow 2.5s ease forwards;
+}
+
+@keyframes netflixGlow{
+
+  0%{
+    opacity:0;
+    transform:scale(.5);
+    letter-spacing:40px;
+  }
+
+  100%{
+    opacity:1;
+    transform:scale(1);
+    letter-spacing:4px;
+  }
+}
+
+@keyframes introHide{
+
+  to{
+    opacity:0;
+    visibility:hidden;
+  }
+}
+
 /* INTRO */
 
 #intro{
@@ -283,7 +343,39 @@ body{
   background:rgba(255,255,255,.28);
 }
 
-/* BUTTERFLIES */
+/* PARTICLES */
+
+body::before{
+
+  content:"";
+
+  position:fixed;
+  inset:0;
+
+  background-image:
+  radial-gradient(rgba(255,255,255,.75) 1px, transparent 1px);
+
+  background-size:40px 40px;
+
+  opacity:.35;
+
+  animation:sparkle 12s linear infinite;
+
+  z-index:-2;
+}
+
+@keyframes sparkle{
+
+  from{
+    transform:translateY(0px);
+  }
+
+  to{
+    transform:translateY(-40px);
+  }
+}
+
+/* REALISTIC BUTTERFLIES */
 
 .butterfly{
 
@@ -301,8 +393,8 @@ body{
   drop-shadow(0 0 15px rgba(120,170,255,.6))
   drop-shadow(0 0 35px rgba(255,255,255,.5));
 
-  animation-name:fly;
-  animation-timing-function:linear;
+  animation-name:realFly;
+  animation-timing-function:ease-in-out;
   animation-iteration-count:infinite;
 }
 
@@ -334,20 +426,42 @@ body{
   }
 }
 
-@keyframes fly{
+@keyframes realFly{
 
   0%{
     transform:
-    translateY(0vh)
-    translateX(0px)
+    translate(0px,0px)
     rotate(0deg);
+  }
+
+  20%{
+    transform:
+    translate(40px,-20vh)
+    rotate(6deg);
+  }
+
+  40%{
+    transform:
+    translate(-20px,-45vh)
+    rotate(-5deg);
+  }
+
+  60%{
+    transform:
+    translate(80px,-75vh)
+    rotate(10deg);
+  }
+
+  80%{
+    transform:
+    translate(20px,-105vh)
+    rotate(-8deg);
   }
 
   100%{
     transform:
-    translateY(-145vh)
-    translateX(260px)
-    rotate(20deg);
+    translate(140px,-145vh)
+    rotate(15deg);
   }
 }
 
@@ -542,16 +656,102 @@ body{
   font-size:.95rem;
 }
 
-/* MODAL */
+/* LETTERS */
 
-.modal{
+.letters-section{
+
+  padding:60px 20px 120px;
+
+  position:relative;
+  z-index:2;
+}
+
+.letters-title{
+
+  text-align:center;
+
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:4rem;
+
+  color:#8755af;
+
+  margin-bottom:55px;
+}
+
+.letters-grid{
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(260px,1fr));
+
+  gap:25px;
+
+  max-width:1100px;
+
+  margin:auto;
+}
+
+.letter-card{
+
+  height:220px;
+
+  border-radius:28px;
+
+  background:
+  linear-gradient(
+  135deg,
+  rgba(255,255,255,.35),
+  rgba(255,255,255,.15));
+
+  backdrop-filter:blur(16px);
+
+  border:1px solid rgba(255,255,255,.35);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  cursor:pointer;
+
+  padding:25px;
+
+  transition:.4s ease;
+
+  box-shadow:
+  0 0 35px rgba(195,145,255,.18);
+}
+
+.letter-card:hover{
+
+  transform:
+  translateY(-10px)
+  rotate(-2deg);
+}
+
+.letter-card span{
+
+  font-size:1.3rem;
+
+  color:#6e5a79;
+
+  line-height:1.7;
+}
+
+/* MODALS */
+
+.modal,
+.letter-modal{
 
   position:fixed;
   inset:0;
 
-  background:rgba(40,18,52,.45);
+  background:rgba(25,10,40,.45);
 
-  backdrop-filter:blur(12px);
+  backdrop-filter:blur(15px);
 
   display:flex;
   align-items:center;
@@ -562,79 +762,65 @@ body{
 
   transition:.5s ease;
 
-  z-index:999;
+  z-index:999999;
 }
 
-.modal.active{
+.modal.active,
+.letter-modal.active{
 
   opacity:1;
   pointer-events:auto;
 }
 
-.modal-content{
+.modal-content,
+.letter-box{
 
   width:92%;
-  max-width:760px;
+  max-width:700px;
 
-  background:rgba(255,255,255,.93);
+  padding:50px 35px;
 
   border-radius:30px;
 
-  padding:55px 35px;
+  background:
+  rgba(255,255,255,.92);
 
   text-align:center;
+
+  box-shadow:
+  0 0 60px rgba(195,145,255,.35);
 }
 
-.modal-content h2{
+.modal-content h2,
+#letterTitle{
 
   font-family:'Cormorant Garamond',serif;
 
-  font-size:3.3rem;
-
-  margin-bottom:28px;
+  font-size:3rem;
 
   color:#8755af;
+
+  margin-bottom:22px;
 }
 
-#message{
+#message,
+#letterText{
 
-  line-height:2;
+  line-height:1.9;
 
-  font-size:1.1rem;
+  color:#695675;
 
-  color:#5e4a68;
-
-  min-height:180px;
+  font-size:1.08rem;
 }
 
-.word{
+.close-btn,
+.close-letter{
 
-  opacity:0;
-
-  display:inline-block;
-
-  transform:translateY(10px);
-
-  animation:reveal .5s forwards;
-}
-
-@keyframes reveal{
-
-  to{
-    opacity:1;
-    transform:translateY(0px);
-  }
-}
-
-.close-btn{
-
-  margin-top:35px;
+  margin-top:32px;
 
   border:none;
 
-  cursor:pointer;
-
-  padding:14px 40px;
+  padding:14px 38px;
 
   border-radius:100px;
 
@@ -642,7 +828,20 @@ body{
 
   color:white;
 
+  cursor:pointer;
+
   font-size:1rem;
+}
+
+/* FOOTER */
+
+footer{
+
+  text-align:center;
+
+  padding:50px 20px;
+
+  color:#7a6587;
 }
 
 /* MOBILE */
@@ -675,6 +874,14 @@ body{
   .password-box{
     width:92%;
   }
+
+  .netflix-logo{
+    font-size:6rem;
+  }
+
+  .letters-title{
+    font-size:3rem;
+  }
 }
 
 </style>
@@ -684,11 +891,21 @@ body{
 <body>
 
 <!-- MUSIC -->
-<!-- Upload as music.mp3 -->
+<!-- Upload your song as music.mp3 -->
 
 <audio id="bgMusic" loop>
   <source src="music.mp3" type="audio/mp3">
 </audio>
+
+<!-- NETFLIX INTRO -->
+
+<div id="netflixIntro">
+
+  <div class="netflix-logo">
+    B
+  </div>
+
+</div>
 
 <!-- INTRO -->
 
@@ -706,7 +923,7 @@ body{
 
 </div>
 
-<!-- PASSWORD SCREEN -->
+<!-- PASSWORD -->
 
 <div id="passwordScreen">
 
@@ -748,17 +965,17 @@ Enter the secret pin 💜
 
 <!-- BUTTERFLIES -->
 
-<div class="butterfly" style="left:2%; width:65px; animation-duration:18s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:12%; width:90px; animation-duration:25s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:22%; width:72px; animation-duration:20s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:32%; width:100px; animation-duration:28s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:42%; width:68px; animation-duration:19s;"><img src="butterfly.png"></div>
+<div class="butterfly active" style="left:2%; width:65px; animation-duration:18s;"><img src="butterfly.png"></div>
+<div class="butterfly active" style="left:12%; width:90px; animation-duration:25s;"><img src="butterfly.png"></div>
+<div class="butterfly active" style="left:22%; width:72px; animation-duration:20s;"><img src="butterfly.png"></div>
+<div class="butterfly active" style="left:32%; width:100px; animation-duration:28s;"><img src="butterfly.png"></div>
+<div class="butterfly active" style="left:42%; width:68px; animation-duration:19s;"><img src="butterfly.png"></div>
 
-<div class="butterfly" style="left:52%; width:92px; animation-duration:24s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:62%; width:74px; animation-duration:21s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:72%; width:104px; animation-duration:27s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:82%; width:70px; animation-duration:20s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:92%; width:96px; animation-duration:25s;"><img src="butterfly.png"></div>
+<div class="butterfly active" style="left:52%; width:92px; animation-duration:24s;"><img src="butterfly.png"></div>
+<div class="butterfly active" style="left:62%; width:74px; animation-duration:21s;"><img src="butterfly.png"></div>
+<div class="butterfly active" style="left:72%; width:104px; animation-duration:27s;"><img src="butterfly.png"></div>
+<div class="butterfly active" style="left:82%; width:70px; animation-duration:20s;"><img src="butterfly.png"></div>
+<div class="butterfly active" style="left:92%; width:96px; animation-duration:25s;"><img src="butterfly.png"></div>
 
 <!-- MAIN CONTENT -->
 
@@ -766,7 +983,7 @@ Enter the secret pin 💜
 
 <section class="hero">
 
-<h1>This is For, Bharathi Priya 🦋</h1>
+<h1>For you, Bharathi Priya 🦋</h1>
 
 <p>
 My favourite person, my comfort place, and the best bestfriend I could ever ask for.
@@ -833,6 +1050,30 @@ Our memories
 
 </section>
 
+<!-- LETTERS -->
+
+<section class="letters-section">
+
+<h2 class="letters-title">
+Open When 💌
+</h2>
+
+<div class="letters-grid">
+
+<div class="letter-card" onclick="openLetter('sad')">
+<span>Open when you're sad 💜</span>
+</div>
+
+<div class="letter-card" onclick="openLetter('happy')">
+<span>Open when you're happy ✨</span>
+</div>
+
+</div>
+
+</section>
+
+<!-- MAGIC MODAL -->
+
 <div class="modal" id="modal">
 
 <div class="modal-content">
@@ -849,6 +1090,28 @@ Close
 
 </div>
 
+<!-- LETTER MODAL -->
+
+<div class="letter-modal" id="letterModal">
+
+<div class="letter-box">
+
+<h2 id="letterTitle"></h2>
+
+<p id="letterText"></p>
+
+<button class="close-letter" onclick="closeLetter()">
+Close 💜
+</button>
+
+</div>
+
+</div>
+
+<footer>
+Made for Bharathi Priya 🦋
+</footer>
+
 </div>
 
 <script>
@@ -857,33 +1120,35 @@ let enteredPin = "";
 
 /* BUTTERFLY TOUCH */
 
-const touchButterfly = document.getElementById("touchButterfly");
+const touchButterfly =
+document.getElementById("touchButterfly");
 
 touchButterfly.addEventListener("click", () => {
 
   touchButterfly.classList.add("fly-away");
 
-  const music = document.getElementById("bgMusic");
+  const music =
+  document.getElementById("bgMusic");
 
   music.volume = 0.75;
 
   music.play();
 
-  document.querySelectorAll(".butterfly").forEach((b) => {
-    b.classList.add("active");
-  });
-
   setTimeout(() => {
 
-    document.getElementById("intro").style.display = "none";
+    document
+    .getElementById("intro")
+    .style.display = "none";
 
-    document.getElementById("passwordScreen").style.display = "flex";
+    document
+    .getElementById("passwordScreen")
+    .style.display = "flex";
 
   }, 1200);
 
 });
 
-/* PIN FUNCTIONS */
+/* PIN */
 
 function addNumber(num){
 
@@ -892,9 +1157,7 @@ function addNumber(num){
     enteredPin += num;
 
     updateDisplay();
-
   }
-
 }
 
 function clearPin(){
@@ -902,24 +1165,27 @@ function clearPin(){
   enteredPin = "";
 
   updateDisplay();
-
 }
 
 function updateDisplay(){
 
-  document.getElementById("pinDisplay").innerHTML =
+  document
+  .getElementById("pinDisplay")
+  .innerHTML =
   "•".repeat(enteredPin.length);
-
 }
 
 function checkPin(){
 
   if(enteredPin === "5689"){
 
-    document.getElementById("passwordScreen").style.display = "none";
+    document
+    .getElementById("passwordScreen")
+    .style.display = "none";
 
-    document.getElementById("mainContent").classList.add("show");
-
+    document
+    .getElementById("mainContent")
+    .classList.add("show");
   }
 
   else{
@@ -929,19 +1195,19 @@ function checkPin(){
     updateDisplay();
 
     alert("Wrong Password 🥺");
-
   }
-
 }
 
 /* SECRET MESSAGE */
 
 const hiddenMessage =
-"No matter how many people come and go in life, you will always remain one of the not one of the you are the most precious parts of mine. Thank you for being my happiness, my safe place, my favourite person, and the most beautiful soul I have ever met. 🦋";
+"No matter how many people come and go in life, you will always remain one of the not one of the you are the most precious parts of mine. Thank you for being my happiness, my favourite person, and the most beautiful soul I have ever met. 🦋";
 
 function openMagic(){
 
-  document.getElementById("modal").classList.add("active");
+  document
+  .getElementById("modal")
+  .classList.add("active");
 
   confetti({
     particleCount:240,
@@ -951,19 +1217,23 @@ function openMagic(){
     origin:{ y:0.6 }
   });
 
-  const messageBox = document.getElementById("message");
+  const messageBox =
+  document.getElementById("message");
 
   messageBox.innerHTML = "";
 
-  const words = hiddenMessage.split(" ");
+  const words =
+  hiddenMessage.split(" ");
 
   words.forEach((word,index)=>{
 
-    const span = document.createElement("span");
+    const span =
+    document.createElement("span");
 
     span.className = "word";
 
-    span.style.animationDelay = `${index * 0.09}s`;
+    span.style.animationDelay =
+    `${index * 0.09}s`;
 
     span.innerHTML = word + "&nbsp;";
 
@@ -975,8 +1245,53 @@ function openMagic(){
 
 function closeModal(){
 
-  document.getElementById("modal").classList.remove("active");
+  document
+  .getElementById("modal")
+  .classList.remove("active");
+}
 
+/* LETTER DATA */
+
+const letters = {
+
+  sad: {
+    title: "For your sad days 💜",
+    text:
+    "No matter how hard the day feels, better days will always find their way back to you."
+  },
+
+  happy: {
+    title: "For your happiest moments ✨",
+    text:
+    "Your smile makes everything feel lite. Don't forget to smile always keep smile on your face"
+  }
+
+};
+
+/* OPEN LETTER */
+
+function openLetter(type){
+
+  document
+  .getElementById("letterModal")
+  .classList.add("active");
+
+  document
+  .getElementById("letterTitle")
+  .innerText = letters[type].title;
+
+  document
+  .getElementById("letterText")
+  .innerText = letters[type].text;
+}
+
+/* CLOSE LETTER */
+
+function closeLetter(){
+
+  document
+  .getElementById("letterModal")
+  .classList.remove("active");
 }
 
 </script>
