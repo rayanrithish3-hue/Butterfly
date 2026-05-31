@@ -44,6 +44,45 @@ body{
   linear-gradient(135deg,#fff7fc,#f4edff);
 }
 
+/* MUSIC REACTIVE BACKGROUND */
+
+.music-glow{
+
+  position:fixed;
+  inset:0;
+
+  pointer-events:none;
+
+  z-index:-2;
+
+  opacity:.5;
+
+  background:
+  radial-gradient(circle at center,
+  rgba(255,190,230,.18),
+  transparent 60%);
+
+  animation:musicPulse 4s infinite ease-in-out;
+}
+
+@keyframes musicPulse{
+
+  0%{
+    transform:scale(1);
+    opacity:.35;
+  }
+
+  50%{
+    transform:scale(1.08);
+    opacity:.7;
+  }
+
+  100%{
+    transform:scale(1);
+    opacity:.35;
+  }
+}
+
 /* NIGHT MODE */
 
 body.night{
@@ -56,14 +95,12 @@ body.night{
   color:#ece7ff;
 }
 
-/* STARS */
+/* CONSTELLATION */
 
-.stars{
+.constellation{
 
   position:fixed;
   inset:0;
-
-  overflow:hidden;
 
   pointer-events:none;
 
@@ -72,7 +109,7 @@ body.night{
   display:none;
 }
 
-body.night .stars{
+body.night .constellation{
   display:block;
 }
 
@@ -80,28 +117,86 @@ body.night .stars{
 
   position:absolute;
 
-  width:2px;
-  height:2px;
+  width:3px;
+  height:3px;
 
   background:white;
 
   border-radius:50%;
 
-  opacity:.7;
+  box-shadow:0 0 10px white;
 
   animation:twinkle 3s infinite alternate;
+}
+
+.line{
+
+  position:absolute;
+
+  height:1px;
+
+  background:rgba(255,255,255,.22);
+
+  transform-origin:left center;
 }
 
 @keyframes twinkle{
 
   from{
-    opacity:.2;
-    transform:scale(.8);
+    opacity:.3;
   }
 
   to{
     opacity:1;
-    transform:scale(1.3);
+  }
+}
+
+/* SHOOTING STAR */
+
+.shooting-star{
+
+  position:fixed;
+
+  top:-100px;
+  left:-100px;
+
+  width:180px;
+  height:2px;
+
+  background:
+  linear-gradient(to right,white,transparent);
+
+  transform:rotate(35deg);
+
+  opacity:0;
+
+  pointer-events:none;
+
+  z-index:0;
+
+  animation:shoot 10s linear infinite;
+}
+
+@keyframes shoot{
+
+  0%{
+    top:-10%;
+    left:-10%;
+    opacity:0;
+  }
+
+  5%{
+    opacity:1;
+  }
+
+  20%{
+    top:40%;
+    left:120%;
+    opacity:0;
+  }
+
+  100%{
+    opacity:0;
   }
 }
 
@@ -111,28 +206,77 @@ body.night .stars{
 
   position:fixed;
 
-  top:70px;
-  right:70px;
+  top:60px;
+  right:60px;
 
-  width:90px;
-  height:90px;
+  width:95px;
+  height:95px;
 
   border-radius:50%;
 
   background:
-  radial-gradient(circle at top left,#fff,#d9ddff);
+  radial-gradient(circle at top left,#fff,#dce1ff);
 
   box-shadow:
-  0 0 40px rgba(255,255,255,.45),
-  0 0 90px rgba(180,190,255,.25);
+  0 0 40px rgba(255,255,255,.5),
+  0 0 90px rgba(180,190,255,.28);
 
-  z-index:-1;
+  z-index:2;
 
   display:none;
+
+  cursor:pointer;
+
+  transition:.5s ease;
 }
 
 body.night .moon{
   display:block;
+}
+
+.moon:hover{
+  transform:scale(1.08);
+}
+
+.moon-quote{
+
+  position:fixed;
+
+  top:170px;
+  right:30px;
+
+  width:300px;
+
+  padding:18px;
+
+  border-radius:20px;
+
+  background:rgba(255,255,255,.12);
+
+  backdrop-filter:blur(12px);
+
+  color:#f5efff;
+
+  line-height:1.8;
+
+  font-size:.95rem;
+
+  opacity:0;
+
+  transform:translateY(10px);
+
+  transition:.6s ease;
+
+  pointer-events:none;
+
+  z-index:5;
+}
+
+.moon-quote.show{
+
+  opacity:1;
+
+  transform:translateY(0px);
 }
 
 /* INTRO */
@@ -448,7 +592,7 @@ body.night .touch-text{
   }
 }
 
-/* MAIN CONTENT */
+/* MAIN */
 
 #mainContent{
 
@@ -538,19 +682,11 @@ body.night .hero p{
   margin-bottom:12px;
 }
 
-body.night .magic-title{
-  color:#f0e9ff;
-}
-
 .magic-sub{
 
   margin-bottom:38px;
 
   color:#735f7d;
-}
-
-body.night .magic-sub{
-  color:#d9cff7;
 }
 
 .magic-btn{
@@ -570,10 +706,6 @@ body.night .magic-sub{
 
   background:
   linear-gradient(135deg,#ffb8dc,#c9a3ff);
-
-  box-shadow:
-  0 0 25px rgba(205,155,255,.6),
-  0 0 70px rgba(255,184,220,.5);
 }
 
 /* GALLERY */
@@ -625,6 +757,8 @@ body.night .gallery-title{
   border-radius:24px;
 
   background:white;
+
+  position:relative;
 }
 
 body.night .gallery-item{
@@ -659,6 +793,63 @@ body.night .gallery-item{
 
 body.night .caption{
   color:#e2d8ff;
+}
+
+/* LANDING BUTTERFLY */
+
+.photo-butterfly{
+
+  position:absolute;
+
+  top:10px;
+  right:10px;
+
+  width:45px;
+
+  opacity:0;
+
+  animation:
+  landButterfly 14s infinite;
+}
+
+.gallery-item:nth-child(2) .photo-butterfly{
+  animation-delay:3s;
+}
+
+.gallery-item:nth-child(4) .photo-butterfly{
+  animation-delay:6s;
+}
+
+@keyframes landButterfly{
+
+  0%{
+    opacity:0;
+    transform:
+    translateY(-50px)
+    rotate(-15deg);
+  }
+
+  10%{
+    opacity:1;
+    transform:
+    translateY(0px)
+    rotate(0deg);
+  }
+
+  25%{
+    opacity:1;
+  }
+
+  40%{
+    opacity:0;
+    transform:
+    translateX(90px)
+    translateY(-90px);
+  }
+
+  100%{
+    opacity:0;
+  }
 }
 
 /* LETTERS */
@@ -709,11 +900,11 @@ body.night .letters-title{
   border-radius:28px;
 
   background:
-  rgba(255,255,255,.35);
+  rgba(255,255,255,.15);
 
   backdrop-filter:blur(16px);
 
-  border:1px solid rgba(255,255,255,.35);
+  border:1px solid rgba(255,255,255,.25);
 
   display:flex;
   align-items:center;
@@ -742,13 +933,9 @@ body.night .letter-card{
 
   font-size:1.3rem;
 
-  color:#6e5a79;
+  color:#f3eeff;
 
   line-height:1.7;
-}
-
-body.night .letter-card span{
-  color:#f0e9ff;
 }
 
 /* MODALS */
@@ -861,8 +1048,6 @@ body.night .letter-card span{
   cursor:pointer;
 }
 
-/* FOOTER */
-
 footer{
 
   text-align:center;
@@ -870,10 +1055,6 @@ footer{
   padding:50px 20px;
 
   color:#7a6587;
-}
-
-body.night footer{
-  color:#d6cbf5;
 }
 
 /* MOBILE */
@@ -911,16 +1092,6 @@ body.night footer{
     font-size:3rem;
   }
 
-  .modal-content,
-  .letter-box{
-    padding:35px 20px;
-  }
-
-  .modal-content h2,
-  #letterTitle{
-    font-size:2.3rem;
-  }
-
   .moon{
     width:65px;
     height:65px;
@@ -935,25 +1106,32 @@ body.night footer{
 
 <body>
 
-<!-- STARS -->
+<div class="music-glow"></div>
 
-<div class="stars">
+<!-- CONSTELLATION -->
 
-<div class="star" style="top:8%; left:12%;"></div>
-<div class="star" style="top:14%; left:65%;"></div>
-<div class="star" style="top:20%; left:40%;"></div>
-<div class="star" style="top:32%; left:80%;"></div>
-<div class="star" style="top:42%; left:22%;"></div>
-<div class="star" style="top:52%; left:72%;"></div>
-<div class="star" style="top:62%; left:14%;"></div>
-<div class="star" style="top:72%; left:52%;"></div>
-<div class="star" style="top:84%; left:86%;"></div>
+<div class="constellation">
+
+<div class="star" style="top:15%; left:18%;"></div>
+<div class="star" style="top:20%; left:30%;"></div>
+<div class="star" style="top:28%; left:42%;"></div>
+
+<div class="line" style="top:16%; left:18%; width:120px; transform:rotate(12deg);"></div>
+<div class="line" style="top:23%; left:30%; width:120px; transform:rotate(18deg);"></div>
 
 </div>
 
+<!-- SHOOTING STAR -->
+
+<div class="shooting-star"></div>
+
 <!-- MOON -->
 
-<div class="moon"></div>
+<div class="moon" id="moon"></div>
+
+<div class="moon-quote" id="moonQuote">
+Some Nights Moon is my only companion listening without any Judgement 🌙
+</div>
 
 <!-- MUSIC -->
 
@@ -1025,7 +1203,7 @@ Enter the secret pin 💜
 <div class="butterfly" style="left:32%; width:100px; animation-duration:28s;"><img src="butterfly.png"></div>
 <div class="butterfly" style="left:42%; width:68px; animation-duration:19s;"><img src="butterfly.png"></div>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 
 <div id="mainContent">
 
@@ -1065,36 +1243,40 @@ Our memories
 <div class="masonry">
 
 <div class="gallery-item">
-<img src="images/photo1.jpg" loading="lazy" onerror="this.src='https://placehold.co/600x800/png'">
-<div class="caption">One of my favourite smiles ✨</div>
+<img src="images/photo1.jpg">
+<img class="photo-butterfly" src="butterfly.png">
+<div class="caption">One of my favourite ✨</div>
 </div>
 
 <div class="gallery-item">
-<img src="images/photo2.jpg" loading="lazy" onerror="this.src='https://placehold.co/600x800/png'">
+<img src="images/photo2.jpg">
+<img class="photo-butterfly" src="butterfly.png">
 <div class="caption">Soft little memories 🦋</div>
 </div>
 
 <div class="gallery-item">
-<img src="images/photo3.jpg" loading="lazy" onerror="this.src='https://placehold.co/600x800/png'">
+<img src="images/photo3.jpg">
 <div class="caption">Beautiful moments forever 💜</div>
 </div>
 
 <div class="gallery-item">
-<img src="images/photo4.jpg" loading="lazy" onerror="this.src='https://placehold.co/600x800/png'">
+<img src="images/photo4.jpg">
+<img class="photo-butterfly" src="butterfly.png">
 <div class="caption">The calm in my chaos 🌸</div>
 </div>
 
 <div class="gallery-item">
-<img src="images/photo5.jpg" loading="lazy"> 
-<div class="caption">Every moment feels magical 💫 </div>
+<img src="images/photo5.jpg">
+<div class="caption">Favourite moments forever 💫</div>
 </div>
 
 <div class="gallery-item">
-<img src="images/photo6.jpg" loading="lazy"> 
-<div class="caption">My favourite human 💌 </div> </div>  
+<img src="images/photo6.jpg">
+<div class="caption">You make life softer 💜</div>
 </div>
 
 </div>
+
 </section>
 
 <section class="letters-section">
@@ -1117,7 +1299,7 @@ Open When 💌
 
 </section>
 
-<!-- MAGIC MODAL -->
+<!-- MODAL -->
 
 <div class="modal" id="modal">
 
@@ -1161,13 +1343,56 @@ Made for Bharathi Priya 🦋
 
 <script>
 
-/* DAY NIGHT MODE */
+/* AI VOICE */
+
+function playGreeting(){
+
+  const voice =
+  new SpeechSynthesisUtterance(
+  "Hi Bharathi Priya. Welcome."
+  );
+
+  voice.rate = 0.92;
+  voice.pitch = 1;
+  voice.volume = 1;
+
+  const voices =
+  speechSynthesis.getVoices();
+
+  const femaleVoice =
+  voices.find(v =>
+  v.name.includes("Female") ||
+  v.name.includes("Samantha") ||
+  v.name.includes("Google UK English Female")
+  );
+
+  if(femaleVoice){
+    voice.voice = femaleVoice;
+  }
+
+  speechSynthesis.speak(voice);
+}
+
+/* DAY NIGHT */
 
 const hour = new Date().getHours();
 
 if(hour >= 18 || hour <= 5){
   document.body.classList.add("night");
 }
+
+/* MOON QUOTE */
+
+const moon =
+document.getElementById("moon");
+
+const moonQuote =
+document.getElementById("moonQuote");
+
+moon.onclick = () => {
+
+  moonQuote.classList.toggle("show");
+};
 
 /* PIN */
 
@@ -1185,8 +1410,6 @@ document.getElementById("passwordScreen");
 const bgMusic =
 document.getElementById("bgMusic");
 
-/* TOUCH BUTTERFLY */
-
 touchButterfly.onclick = function(){
 
   touchButterfly.style.pointerEvents = "none";
@@ -1196,6 +1419,8 @@ touchButterfly.onclick = function(){
   bgMusic.volume = 0.75;
 
   bgMusic.play();
+
+  playGreeting();
 
   setTimeout(() => {
 
@@ -1261,10 +1486,10 @@ function checkPin(){
   }
 }
 
-/* SECRET MESSAGE */
+/* MESSAGE */
 
 const hiddenMessage =
-"No matter how many people come and go in life, you will always remain one of the not one of the you are the most precious parts of mine. Thank you for being my happiness, my safe place, my favourite person, and the most beautiful soul I have ever met. 🦋";
+"No matter how many people come and go in life, you will always remain one of the not one of the you are the most precious parts of mine. Thank you for being my happiness, my favourite person, and the most beautiful soul I have ever met. 🦋";
 
 function openMagic(){
 
@@ -1327,7 +1552,7 @@ const letters = {
   happy: {
     title: "For your happiest moments ✨",
     text:
-    "Your smile makes everything feels lite. Always Keep Smile on your Face. Don't Forget to Smile."
+    "Your smile makes everything feel lite. Always Keep Smile on your Face. Don't Forget to Smile."
   }
 
 };
