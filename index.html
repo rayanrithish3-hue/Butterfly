@@ -42,66 +42,6 @@ body{
   color:#5e4867;
 }
 
-/* NETFLIX INTRO */
-
-#netflixIntro{
-
-  position:fixed;
-  inset:0;
-
-  background:black;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  z-index:999999;
-
-  animation:introHide 1.2s forwards;
-
-  animation-delay:2.8s;
-}
-
-.netflix-logo{
-
-  font-size:10rem;
-
-  font-weight:700;
-
-  color:#ff2d75;
-
-  font-family:'Cormorant Garamond',serif;
-
-  text-shadow:
-  0 0 30px rgba(255,45,117,.9),
-  0 0 80px rgba(255,45,117,.5);
-
-  animation:netflixGlow 2.5s ease forwards;
-}
-
-@keyframes netflixGlow{
-
-  0%{
-    opacity:0;
-    transform:scale(.5);
-    letter-spacing:40px;
-  }
-
-  100%{
-    opacity:1;
-    transform:scale(1);
-    letter-spacing:4px;
-  }
-}
-
-@keyframes introHide{
-
-  to{
-    opacity:0;
-    visibility:hidden;
-  }
-}
-
 /* INTRO */
 
 #intro{
@@ -375,7 +315,7 @@ body::before{
   }
 }
 
-/* REALISTIC BUTTERFLIES */
+/* BUTTERFLIES */
 
 .butterfly{
 
@@ -387,7 +327,7 @@ body::before{
 
   z-index:1;
 
-  opacity:0;
+  opacity:.95;
 
   filter:
   drop-shadow(0 0 15px rgba(120,170,255,.6))
@@ -396,10 +336,6 @@ body::before{
   animation-name:realFly;
   animation-timing-function:ease-in-out;
   animation-iteration-count:infinite;
-}
-
-.butterfly.active{
-  opacity:.95;
 }
 
 .butterfly img{
@@ -875,10 +811,6 @@ footer{
     width:92%;
   }
 
-  .netflix-logo{
-    font-size:6rem;
-  }
-
   .letters-title{
     font-size:3rem;
   }
@@ -896,16 +828,6 @@ footer{
 <audio id="bgMusic" loop>
   <source src="music.mp3" type="audio/mp3">
 </audio>
-
-<!-- NETFLIX INTRO -->
-
-<div id="netflixIntro">
-
-  <div class="netflix-logo">
-    BHARATHI PRIYA
-  </div>
-
-</div>
 
 <!-- INTRO -->
 
@@ -965,17 +887,17 @@ Enter the secret pin 💜
 
 <!-- BUTTERFLIES -->
 
-<div class="butterfly active" style="left:2%; width:65px; animation-duration:18s;"><img src="butterfly.png"></div>
-<div class="butterfly active" style="left:12%; width:90px; animation-duration:25s;"><img src="butterfly.png"></div>
-<div class="butterfly active" style="left:22%; width:72px; animation-duration:20s;"><img src="butterfly.png"></div>
-<div class="butterfly active" style="left:32%; width:100px; animation-duration:28s;"><img src="butterfly.png"></div>
-<div class="butterfly active" style="left:42%; width:68px; animation-duration:19s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:2%; width:65px; animation-duration:18s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:12%; width:90px; animation-duration:25s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:22%; width:72px; animation-duration:20s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:32%; width:100px; animation-duration:28s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:42%; width:68px; animation-duration:19s;"><img src="butterfly.png"></div>
 
-<div class="butterfly active" style="left:52%; width:92px; animation-duration:24s;"><img src="butterfly.png"></div>
-<div class="butterfly active" style="left:62%; width:74px; animation-duration:21s;"><img src="butterfly.png"></div>
-<div class="butterfly active" style="left:72%; width:104px; animation-duration:27s;"><img src="butterfly.png"></div>
-<div class="butterfly active" style="left:82%; width:70px; animation-duration:20s;"><img src="butterfly.png"></div>
-<div class="butterfly active" style="left:92%; width:96px; animation-duration:25s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:52%; width:92px; animation-duration:24s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:62%; width:74px; animation-duration:21s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:72%; width:104px; animation-duration:27s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:82%; width:70px; animation-duration:20s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:92%; width:96px; animation-duration:25s;"><img src="butterfly.png"></div>
 
 <!-- MAIN CONTENT -->
 
@@ -1138,7 +1060,7 @@ touchButterfly.addEventListener("click", () => {
 
     document
     .getElementById("intro")
-    .style.display = "none";
+    .classList.add("hide");
 
     document
     .getElementById("passwordScreen")
@@ -1201,9 +1123,8 @@ function checkPin(){
 /* SECRET MESSAGE */
 
 const hiddenMessage =
-"No matter how many people come and go in life, 
- you will always remain one of the not one of the you are the most precious parts of mine. 
- Thank you for being my happiness, my favourite person, and the most beautiful soul I have ever met. 🦋";
+"No matter how many people come and go in life, you will always remain one of the nit one of the you are the most precious parts of mine. 
+ Thank you for being my happiness, my safe place, my favourite person, and the most beautiful soul I have ever met. 🦋";
 
 function openMagic(){
 
@@ -1265,7 +1186,7 @@ const letters = {
   happy: {
     title: "For your happiest moments ✨",
     text:
-    "Your smile makes everything feel lite. Don't forget to smile always keep smile on your face"
+    "Your smile makes everything feel lite. Always keep smile on your face Don’t forget to smile."
   }
 
 };
