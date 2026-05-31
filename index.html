@@ -32,14 +32,159 @@ body{
 
   font-family:'Poppins',sans-serif;
 
+  min-height:100vh;
+
+  color:#5e4867;
+
+  transition:1.2s ease;
+
   background:
   radial-gradient(circle at top left,#ffdff2 0%,transparent 30%),
   radial-gradient(circle at bottom right,#d8c2ff 0%,transparent 35%),
   linear-gradient(135deg,#fff7fc,#f4edff);
+}
 
-  min-height:100vh;
+/* DAY CLOUDS */
 
-  color:#5e4867;
+.cloud{
+
+  position:fixed;
+
+  background:rgba(255,255,255,.18);
+
+  border-radius:100px;
+
+  filter:blur(12px);
+
+  z-index:-1;
+
+  animation:cloudMove linear infinite;
+}
+
+.cloud1{
+  width:220px;
+  height:70px;
+  top:12%;
+  left:-250px;
+  animation-duration:55s;
+}
+
+.cloud2{
+  width:170px;
+  height:55px;
+  top:28%;
+  left:-180px;
+  animation-duration:70s;
+}
+
+.cloud3{
+  width:260px;
+  height:75px;
+  top:45%;
+  left:-300px;
+  animation-duration:90s;
+}
+
+@keyframes cloudMove{
+
+  from{
+    transform:translateX(0px);
+  }
+
+  to{
+    transform:translateX(160vw);
+  }
+}
+
+/* NIGHT MODE */
+
+body.night{
+
+  background:
+  radial-gradient(circle at top,#31345f 0%,transparent 30%),
+  radial-gradient(circle at bottom,#171827 0%,transparent 35%),
+  linear-gradient(135deg,#121320,#1f2036);
+
+  color:#ece7ff;
+}
+
+/* STARS */
+
+.stars{
+
+  position:fixed;
+  inset:0;
+
+  overflow:hidden;
+
+  pointer-events:none;
+
+  z-index:-1;
+
+  display:none;
+}
+
+body.night .stars{
+  display:block;
+}
+
+.star{
+
+  position:absolute;
+
+  width:2px;
+  height:2px;
+
+  background:white;
+
+  border-radius:50%;
+
+  opacity:.7;
+
+  animation:twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle{
+
+  from{
+    opacity:.2;
+    transform:scale(.8);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1.3);
+  }
+}
+
+/* MOON */
+
+.moon{
+
+  position:fixed;
+
+  top:70px;
+  right:70px;
+
+  width:90px;
+  height:90px;
+
+  border-radius:50%;
+
+  background:
+  radial-gradient(circle at top left,#fff,#d9ddff);
+
+  box-shadow:
+  0 0 40px rgba(255,255,255,.45),
+  0 0 90px rgba(180,190,255,.25);
+
+  z-index:-1;
+
+  display:none;
+}
+
+body.night .moon{
+  display:block;
 }
 
 /* INTRO */
@@ -62,6 +207,12 @@ body{
   transition:1.2s ease;
 }
 
+body.night #intro{
+
+  background:
+  linear-gradient(135deg,#181927,#272846);
+}
+
 .blur-bg{
 
   position:absolute;
@@ -69,7 +220,7 @@ body{
 
   backdrop-filter:blur(18px);
 
-  background:rgba(255,255,255,.35);
+  background:rgba(255,255,255,.15);
 }
 
 /* CENTER BUTTERFLY */
@@ -140,6 +291,10 @@ body{
   animation:pulse 2s infinite;
 }
 
+body.night .touch-text{
+  color:#e4dcff;
+}
+
 @keyframes pulse{
 
   0%{
@@ -155,7 +310,7 @@ body{
   }
 }
 
-/* PASSWORD SCREEN */
+/* PASSWORD */
 
 #passwordScreen{
 
@@ -188,9 +343,6 @@ body{
   border:1px solid rgba(255,255,255,.35);
 
   backdrop-filter:blur(18px);
-
-  box-shadow:
-  0 0 40px rgba(195,145,255,.3);
 
   text-align:center;
 }
@@ -264,47 +416,6 @@ body{
   font-size:1.3rem;
 
   cursor:pointer;
-
-  transition:.25s ease;
-}
-
-.key:hover{
-
-  transform:scale(1.06);
-
-  background:rgba(255,255,255,.28);
-}
-
-/* BACKGROUND PARTICLES */
-
-body::before{
-
-  content:"";
-
-  position:fixed;
-  inset:0;
-
-  background-image:
-  radial-gradient(rgba(255,255,255,.75) 1px, transparent 1px);
-
-  background-size:40px 40px;
-
-  opacity:.35;
-
-  animation:sparkle 12s linear infinite;
-
-  z-index:-2;
-}
-
-@keyframes sparkle{
-
-  from{
-    transform:translateY(0px);
-  }
-
-  to{
-    transform:translateY(-40px);
-  }
 }
 
 /* BUTTERFLIES */
@@ -320,10 +431,6 @@ body::before{
   z-index:1;
 
   opacity:.95;
-
-  filter:
-  drop-shadow(0 0 15px rgba(120,170,255,.6))
-  drop-shadow(0 0 35px rgba(255,255,255,.5));
 
   animation-name:realFly;
   animation-timing-function:ease-in-out;
@@ -441,6 +548,10 @@ body::before{
   margin-bottom:18px;
 }
 
+body.night .hero h1{
+  color:#e7ddff;
+}
+
 .hero p{
 
   max-width:760px;
@@ -452,7 +563,11 @@ body::before{
   color:#6e5a79;
 }
 
-/* MAGIC SECTION */
+body.night .hero p{
+  color:#d8cff6;
+}
+
+/* MAGIC */
 
 .magic-section{
 
@@ -485,8 +600,6 @@ body::before{
 .magic-btn{
 
   border:none;
-  outline:none;
-  cursor:pointer;
 
   padding:24px 80px;
 
@@ -497,19 +610,14 @@ body::before{
 
   color:white;
 
+  cursor:pointer;
+
   background:
   linear-gradient(135deg,#ffb8dc,#c9a3ff);
 
   box-shadow:
   0 0 25px rgba(205,155,255,.6),
   0 0 70px rgba(255,184,220,.5);
-
-  transition:.4s ease;
-}
-
-.magic-btn:hover{
-
-  transform:translateY(-6px) scale(1.04);
 }
 
 /* GALLERY */
@@ -557,9 +665,6 @@ body::before{
   border-radius:24px;
 
   background:white;
-
-  box-shadow:
-  0 12px 35px rgba(0,0,0,.08);
 }
 
 .gallery-item img{
@@ -646,15 +751,6 @@ body::before{
   cursor:pointer;
 
   padding:25px;
-
-  transition:.4s ease;
-}
-
-.letter-card:hover{
-
-  transform:
-  translateY(-10px)
-  rotate(-2deg);
 }
 
 .letter-card span{
@@ -712,9 +808,6 @@ body::before{
 
   text-align:center;
 
-  box-shadow:
-  0 0 60px rgba(195,145,255,.35);
-
   overflow:hidden;
 }
 
@@ -739,17 +832,7 @@ body::before{
 
   font-size:1.02rem;
 
-  max-width:100%;
-
-  word-wrap:break-word;
-
-  overflow-wrap:break-word;
-
-  white-space:normal;
-
   min-height:120px;
-
-  padding:0 5px;
 }
 
 .word{
@@ -787,8 +870,6 @@ body::before{
   color:white;
 
   cursor:pointer;
-
-  font-size:1rem;
 }
 
 /* FOOTER */
@@ -846,6 +927,13 @@ footer{
   #letterTitle{
     font-size:2.3rem;
   }
+
+  .moon{
+    width:65px;
+    height:65px;
+    top:40px;
+    right:30px;
+  }
 }
 
 </style>
@@ -854,8 +942,36 @@ footer{
 
 <body>
 
+<!-- DAY CLOUDS -->
+
+<div class="cloud cloud1"></div>
+<div class="cloud cloud2"></div>
+<div class="cloud cloud3"></div>
+
+<!-- NIGHT STARS -->
+
+<div class="stars">
+
+<div class="star" style="top:8%; left:12%;"></div>
+<div class="star" style="top:14%; left:65%;"></div>
+<div class="star" style="top:20%; left:40%;"></div>
+<div class="star" style="top:32%; left:80%;"></div>
+<div class="star" style="top:42%; left:22%;"></div>
+<div class="star" style="top:52%; left:72%;"></div>
+<div class="star" style="top:62%; left:14%;"></div>
+<div class="star" style="top:72%; left:52%;"></div>
+<div class="star" style="top:84%; left:86%;"></div>
+<div class="star" style="top:18%; left:90%;"></div>
+<div class="star" style="top:45%; left:58%;"></div>
+<div class="star" style="top:68%; left:34%;"></div>
+
+</div>
+
+<!-- MOON -->
+
+<div class="moon"></div>
+
 <!-- MUSIC -->
-<!-- upload as music.mp3 -->
 
 <audio id="bgMusic" loop>
   <source src="music.mp3" type="audio/mp3">
@@ -925,12 +1041,6 @@ Enter the secret pin 💜
 <div class="butterfly" style="left:32%; width:100px; animation-duration:28s;"><img src="butterfly.png"></div>
 <div class="butterfly" style="left:42%; width:68px; animation-duration:19s;"><img src="butterfly.png"></div>
 
-<div class="butterfly" style="left:52%; width:92px; animation-duration:24s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:62%; width:74px; animation-duration:21s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:72%; width:104px; animation-duration:27s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:82%; width:70px; animation-duration:20s;"><img src="butterfly.png"></div>
-<div class="butterfly" style="left:92%; width:96px; animation-duration:25s;"><img src="butterfly.png"></div>
-
 <!-- MAIN CONTENT -->
 
 <div id="mainContent">
@@ -988,16 +1098,6 @@ Our memories
 <div class="gallery-item">
 <img src="images/photo4.jpg" loading="lazy">
 <div class="caption">The calm in my chaos 🌸</div>
-</div>
-
-<div class="gallery-item">
-<img src="images/photo5.jpg" loading="lazy">
-<div class="caption">Every moment feels magical 💫</div>
-</div>
-
-<div class="gallery-item">
-<img src="images/photo6.jpg" loading="lazy">
-<div class="caption">My favourite human 💕</div>
 </div>
 
 </div>
@@ -1069,6 +1169,22 @@ Made for Bharathi Priya 🦋
 </div>
 
 <script>
+
+/* DAY NIGHT MODE */
+
+const hour = new Date().getHours();
+
+if(hour >= 7 && hour < 18){
+
+  document.body.classList.remove("night");
+}
+
+else{
+
+  document.body.classList.add("night");
+}
+
+/* PIN */
 
 let enteredPin = "";
 
@@ -1165,7 +1281,7 @@ function checkPin(){
 /* SECRET MESSAGE */
 
 const hiddenMessage =
-"No matter how many people come and go in life, you will always remain one of the not one of the you are the most precious parts of mine. Thank you for being my happiness, my safe place, my favourite person, and the most beautiful soul I have ever met. 🦋";
+"No matter how many people come and go in life, you will always remain one of the not one of the you are the most precious parts of mine. Thank you for being my happiness, my favourite person, and the most beautiful soul I have ever met. 🦋";
 
 /* OPEN MAGIC */
 
@@ -1219,7 +1335,7 @@ function closeModal(){
   .classList.remove("active");
 }
 
-/* LETTER DATA */
+/* LETTERS */
 
 const letters = {
 
@@ -1232,12 +1348,10 @@ const letters = {
   happy: {
     title: "For your happiest moments ✨",
     text:
-    "Your smile makes everything feel lite. Always Keep Smile on your Face. Don't forget to Smile."
+    "Your smile makes everything feels lite. Always Keep Smile on your Face. Don’t Forget to Smile."
   }
 
 };
-
-/* OPEN LETTER */
 
 function openLetter(type){
 
@@ -1255,8 +1369,6 @@ function openLetter(type){
   .innerText =
   letters[type].text;
 }
-
-/* CLOSE LETTER */
 
 function closeLetter(){
 
