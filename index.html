@@ -1040,37 +1040,59 @@ Made for Bharathi Priya 🦋
 
 let enteredPin = "";
 
-/* BUTTERFLY TOUCH */
+/* ELEMENTS */
 
 const touchButterfly =
 document.getElementById("touchButterfly");
 
-touchButterfly.addEventListener("click", () => {
+const intro =
+document.getElementById("intro");
+
+const passwordScreen =
+document.getElementById("passwordScreen");
+
+const bgMusic =
+document.getElementById("bgMusic");
+
+/* TOUCH BUTTERFLY */
+
+touchButterfly.onclick = function(){
+
+  /* DISABLE MULTIPLE CLICKS */
+
+  touchButterfly.style.pointerEvents = "none";
+
+  /* BUTTERFLY FLY */
 
   touchButterfly.classList.add("fly-away");
 
-  const music =
-  document.getElementById("bgMusic");
+  /* START MUSIC */
 
-  music.volume = 0.75;
+  bgMusic.volume = 0.75;
 
-  music.play();
+  bgMusic.play();
+
+  /* HIDE INTRO */
 
   setTimeout(() => {
 
-    document
-    .getElementById("intro")
-    .classList.add("hide");
+    intro.style.opacity = "0";
 
-    document
-    .getElementById("passwordScreen")
-    .style.display = "flex";
+    intro.style.visibility = "hidden";
 
-  }, 1200);
+  }, 400);
 
-});
+  /* SHOW PASSWORD */
 
-/* PIN */
+  setTimeout(() => {
+
+    passwordScreen.style.display = "flex";
+
+  }, 900);
+
+};
+
+/* PIN FUNCTIONS */
 
 function addNumber(num){
 
@@ -1101,9 +1123,7 @@ function checkPin(){
 
   if(enteredPin === "5689"){
 
-    document
-    .getElementById("passwordScreen")
-    .style.display = "none";
+    passwordScreen.style.display = "none";
 
     document
     .getElementById("mainContent")
@@ -1123,8 +1143,7 @@ function checkPin(){
 /* SECRET MESSAGE */
 
 const hiddenMessage =
-"No matter how many people come and go in life, you will always remain one of the nit one of the you are the most precious parts of mine. 
- Thank you for being my happiness, my safe place, my favourite person, and the most beautiful soul I have ever met. 🦋";
+"No matter how many people come and go in life, you will always remain one of the not one of the your the most precious parts of mine. Thank you for being my happiness, my favourite person, and the most beautiful soul I have ever met. 🦋";
 
 function openMagic(){
 
@@ -1186,7 +1205,7 @@ const letters = {
   happy: {
     title: "For your happiest moments ✨",
     text:
-    "Your smile makes everything feel lite. Always keep smile on your face Don’t forget to smile."
+    "Your smile makes everything feel lite. Always keep Smile on your Face. Don't forget to Smile."
   }
 
 };
