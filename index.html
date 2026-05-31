@@ -44,45 +44,6 @@ body{
   linear-gradient(135deg,#fff7fc,#f4edff);
 }
 
-/* MUSIC REACTIVE BACKGROUND */
-
-.music-glow{
-
-  position:fixed;
-  inset:0;
-
-  pointer-events:none;
-
-  z-index:-2;
-
-  opacity:.5;
-
-  background:
-  radial-gradient(circle at center,
-  rgba(255,190,230,.18),
-  transparent 60%);
-
-  animation:musicPulse 4s infinite ease-in-out;
-}
-
-@keyframes musicPulse{
-
-  0%{
-    transform:scale(1);
-    opacity:.35;
-  }
-
-  50%{
-    transform:scale(1.08);
-    opacity:.7;
-  }
-
-  100%{
-    transform:scale(1);
-    opacity:.35;
-  }
-}
-
 /* NIGHT MODE */
 
 body.night{
@@ -93,6 +54,43 @@ body.night{
   linear-gradient(135deg,#121320,#1f2036);
 
   color:#ece7ff;
+}
+
+/* MUSIC REACTIVE GLOW */
+
+.music-glow{
+
+  position:fixed;
+  inset:0;
+
+  pointer-events:none;
+
+  z-index:-3;
+
+  background:
+  radial-gradient(circle at center,
+  rgba(255,190,230,.18),
+  transparent 65%);
+
+  animation:musicGlow 5s ease-in-out infinite;
+}
+
+@keyframes musicGlow{
+
+  0%{
+    transform:scale(1);
+    opacity:.35;
+  }
+
+  50%{
+    transform:scale(1.08);
+    opacity:.65;
+  }
+
+  100%{
+    transform:scale(1);
+    opacity:.35;
+  }
 }
 
 /* CONSTELLATION */
@@ -117,16 +115,28 @@ body.night .constellation{
 
   position:absolute;
 
-  width:3px;
-  height:3px;
+  width:2px;
+  height:2px;
 
   background:white;
 
   border-radius:50%;
 
-  box-shadow:0 0 10px white;
+  box-shadow:
+  0 0 8px rgba(255,255,255,.9);
 
-  animation:twinkle 3s infinite alternate;
+  animation:
+  twinkle 4s infinite alternate;
+}
+
+.bp-star{
+
+  width:3px;
+  height:3px;
+
+  box-shadow:
+  0 0 14px rgba(255,255,255,1),
+  0 0 30px rgba(180,190,255,.7);
 }
 
 .line{
@@ -135,7 +145,7 @@ body.night .constellation{
 
   height:1px;
 
-  background:rgba(255,255,255,.22);
+  background:rgba(255,255,255,.18);
 
   transform-origin:left center;
 }
@@ -143,7 +153,7 @@ body.night .constellation{
 @keyframes twinkle{
 
   from{
-    opacity:.3;
+    opacity:.35;
   }
 
   to{
@@ -234,49 +244,72 @@ body.night .moon{
   display:block;
 }
 
-.moon:hover{
+.moon.active{
+
+  background:
+  radial-gradient(circle at top left,
+  #fff7d9,
+  #ffdca8);
+
+  box-shadow:
+  0 0 50px rgba(255,230,170,.8),
+  0 0 120px rgba(255,210,120,.35);
+
   transform:scale(1.08);
 }
+
+/* MOON QUOTE */
 
 .moon-quote{
 
   position:fixed;
 
-  top:170px;
-  right:30px;
+  top:175px;
+  right:25px;
 
-  width:300px;
+  width:310px;
 
-  padding:18px;
+  padding:20px 22px;
 
-  border-radius:20px;
+  border-radius:30px;
 
-  background:rgba(255,255,255,.12);
+  background:
+  rgba(255,255,255,.12);
 
-  backdrop-filter:blur(12px);
+  backdrop-filter:blur(18px);
 
-  color:#f5efff;
+  border:
+  1px solid rgba(255,255,255,.2);
 
-  line-height:1.8;
+  color:#f6f1ff;
 
-  font-size:.95rem;
+  line-height:1.9;
+
+  font-size:.96rem;
 
   opacity:0;
 
-  transform:translateY(10px);
+  transform:
+  translateY(15px)
+  scale(.95);
 
   transition:.6s ease;
 
   pointer-events:none;
 
-  z-index:5;
+  z-index:10;
+
+  box-shadow:
+  0 0 30px rgba(255,255,255,.08);
 }
 
 .moon-quote.show{
 
   opacity:1;
 
-  transform:translateY(0px);
+  transform:
+  translateY(0px)
+  scale(1);
 }
 
 /* INTRO */
@@ -795,56 +828,75 @@ body.night .caption{
   color:#e2d8ff;
 }
 
-/* LANDING BUTTERFLY */
+/* SMALL PHOTO BUTTERFLIES */
 
-.photo-butterfly{
+.gallery-item::after{
+
+  content:"";
 
   position:absolute;
 
-  top:10px;
-  right:10px;
+  width:24px;
+  height:24px;
 
-  width:45px;
+  background:
+  url('butterfly.png')
+  center/contain
+  no-repeat;
+
+  top:12px;
+  right:12px;
 
   opacity:0;
 
   animation:
-  landButterfly 14s infinite;
+  tinyButterfly 18s infinite ease-in-out;
+
+  filter:
+  drop-shadow(0 0 6px rgba(255,255,255,.45));
 }
 
-.gallery-item:nth-child(2) .photo-butterfly{
-  animation-delay:3s;
+.gallery-item:nth-child(2)::after{
+  animation-delay:4s;
 }
 
-.gallery-item:nth-child(4) .photo-butterfly{
-  animation-delay:6s;
+.gallery-item:nth-child(4)::after{
+  animation-delay:8s;
 }
 
-@keyframes landButterfly{
+.gallery-item:nth-child(6)::after{
+  animation-delay:12s;
+}
+
+@keyframes tinyButterfly{
 
   0%{
     opacity:0;
     transform:
-    translateY(-50px)
-    rotate(-15deg);
+    translateY(-35px)
+    rotate(-15deg)
+    scale(.7);
   }
 
-  10%{
+  8%{
     opacity:1;
     transform:
     translateY(0px)
-    rotate(0deg);
+    rotate(0deg)
+    scale(1);
   }
 
-  25%{
+  20%{
     opacity:1;
   }
 
-  40%{
+  35%{
     opacity:0;
     transform:
-    translateX(90px)
-    translateY(-90px);
+    translateX(60px)
+    translateY(-80px)
+    rotate(20deg)
+    scale(.8);
   }
 
   100%{
@@ -1112,34 +1164,49 @@ footer{
 
 <div class="constellation">
 
-<div class="star" style="top:15%; left:18%;"></div>
-<div class="star" style="top:20%; left:30%;"></div>
-<div class="star" style="top:28%; left:42%;"></div>
+<!-- B -->
+<div class="star bp-star" style="top:12%; left:12%;"></div>
+<div class="star bp-star" style="top:18%; left:12%;"></div>
+<div class="star bp-star" style="top:24%; left:12%;"></div>
+<div class="star bp-star" style="top:30%; left:12%;"></div>
 
-<div class="line" style="top:16%; left:18%; width:120px; transform:rotate(12deg);"></div>
-<div class="line" style="top:23%; left:30%; width:120px; transform:rotate(18deg);"></div>
+<div class="star bp-star" style="top:12%; left:18%;"></div>
+<div class="star bp-star" style="top:18%; left:18%;"></div>
+<div class="star bp-star" style="top:24%; left:18%;"></div>
+
+<!-- P -->
+<div class="star bp-star" style="top:12%; left:34%;"></div>
+<div class="star bp-star" style="top:18%; left:34%;"></div>
+<div class="star bp-star" style="top:24%; left:34%;"></div>
+<div class="star bp-star" style="top:30%; left:34%;"></div>
+
+<div class="star bp-star" style="top:12%; left:40%;"></div>
+<div class="star bp-star" style="top:18%; left:40%;"></div>
+
+<!-- EXTRA STARS -->
+
+<div class="star" style="top:8%; left:62%;"></div>
+<div class="star" style="top:16%; left:75%;"></div>
+<div class="star" style="top:24%; left:88%;"></div>
+<div class="star" style="top:38%; left:70%;"></div>
+<div class="star" style="top:48%; left:82%;"></div>
+<div class="star" style="top:62%; left:92%;"></div>
+<div class="star" style="top:74%; left:68%;"></div>
+<div class="star" style="top:82%; left:80%;"></div>
 
 </div>
 
-<!-- SHOOTING STAR -->
-
 <div class="shooting-star"></div>
-
-<!-- MOON -->
 
 <div class="moon" id="moon"></div>
 
 <div class="moon-quote" id="moonQuote">
-Some Nights Moon is my only companion listening without any Judgement 🌙
+🌙 Some Nights Moon is my only companion listening without any Judgement
 </div>
-
-<!-- MUSIC -->
 
 <audio id="bgMusic" loop>
   <source src="music.mp3" type="audio/mp3">
 </audio>
-
-<!-- INTRO -->
 
 <div id="intro">
 
@@ -1154,8 +1221,6 @@ Some Nights Moon is my only companion listening without any Judgement 🌙
 </div>
 
 </div>
-
-<!-- PASSWORD -->
 
 <div id="passwordScreen">
 
@@ -1195,15 +1260,11 @@ Enter the secret pin 💜
 
 </div>
 
-<!-- BUTTERFLIES -->
-
 <div class="butterfly" style="left:2%; width:65px; animation-duration:18s;"><img src="butterfly.png"></div>
 <div class="butterfly" style="left:12%; width:90px; animation-duration:25s;"><img src="butterfly.png"></div>
 <div class="butterfly" style="left:22%; width:72px; animation-duration:20s;"><img src="butterfly.png"></div>
 <div class="butterfly" style="left:32%; width:100px; animation-duration:28s;"><img src="butterfly.png"></div>
 <div class="butterfly" style="left:42%; width:68px; animation-duration:19s;"><img src="butterfly.png"></div>
-
-<!-- MAIN -->
 
 <div id="mainContent">
 
@@ -1244,13 +1305,11 @@ Our memories
 
 <div class="gallery-item">
 <img src="images/photo1.jpg">
-<img class="photo-butterfly" src="butterfly.png">
-<div class="caption">One of my favourite ✨</div>
+<div class="caption">One of my favourite smile ✨</div>
 </div>
 
 <div class="gallery-item">
 <img src="images/photo2.jpg">
-<img class="photo-butterfly" src="butterfly.png">
 <div class="caption">Soft little memories 🦋</div>
 </div>
 
@@ -1261,7 +1320,6 @@ Our memories
 
 <div class="gallery-item">
 <img src="images/photo4.jpg">
-<img class="photo-butterfly" src="butterfly.png">
 <div class="caption">The calm in my chaos 🌸</div>
 </div>
 
@@ -1299,8 +1357,6 @@ Open When 💌
 
 </section>
 
-<!-- MODAL -->
-
 <div class="modal" id="modal">
 
 <div class="modal-content">
@@ -1316,8 +1372,6 @@ Close
 </div>
 
 </div>
-
-<!-- LETTER MODAL -->
 
 <div class="letter-modal" id="letterModal">
 
@@ -1343,45 +1397,11 @@ Made for Bharathi Priya 🦋
 
 <script>
 
-/* AI VOICE */
-
-function playGreeting(){
-
-  const voice =
-  new SpeechSynthesisUtterance(
-  "Hi Bharathi Priya. Welcome."
-  );
-
-  voice.rate = 0.92;
-  voice.pitch = 1;
-  voice.volume = 1;
-
-  const voices =
-  speechSynthesis.getVoices();
-
-  const femaleVoice =
-  voices.find(v =>
-  v.name.includes("Female") ||
-  v.name.includes("Samantha") ||
-  v.name.includes("Google UK English Female")
-  );
-
-  if(femaleVoice){
-    voice.voice = femaleVoice;
-  }
-
-  speechSynthesis.speak(voice);
-}
-
-/* DAY NIGHT */
-
 const hour = new Date().getHours();
 
 if(hour >= 18 || hour <= 5){
   document.body.classList.add("night");
 }
-
-/* MOON QUOTE */
 
 const moon =
 document.getElementById("moon");
@@ -1389,12 +1409,29 @@ document.getElementById("moon");
 const moonQuote =
 document.getElementById("moonQuote");
 
-moon.onclick = () => {
+moon.addEventListener("click",()=>{
 
-  moonQuote.classList.toggle("show");
-};
+  moon.classList.add("active");
 
-/* PIN */
+  moonQuote.classList.add("show");
+
+  confetti({
+    particleCount:40,
+    spread:90,
+    scalar:.7,
+    origin:{
+      x:.88,
+      y:.12
+    }
+  });
+
+  setTimeout(()=>{
+
+    moon.classList.remove("active");
+
+  },1800);
+
+});
 
 let enteredPin = "";
 
@@ -1420,8 +1457,6 @@ touchButterfly.onclick = function(){
 
   bgMusic.play();
 
-  playGreeting();
-
   setTimeout(() => {
 
     intro.style.opacity = "0";
@@ -1437,8 +1472,6 @@ touchButterfly.onclick = function(){
   }, 900);
 
 };
-
-/* PIN */
 
 function addNumber(num){
 
@@ -1486,10 +1519,8 @@ function checkPin(){
   }
 }
 
-/* MESSAGE */
-
 const hiddenMessage =
-"No matter how many people come and go in life, you will always remain one of the not one of the you are the most precious parts of mine. Thank you for being my happiness, my favourite person, and the most beautiful soul I have ever met. 🦋";
+"No matter how many people come and go in life, you will always remain one of the most precious parts of mine. Thank you for being my happiness, my favourite person, and the most beautiful soul I have ever met. 🦋";
 
 function openMagic(){
 
@@ -1539,8 +1570,6 @@ function closeModal(){
   .classList.remove("active");
 }
 
-/* LETTERS */
-
 const letters = {
 
   sad: {
@@ -1552,7 +1581,7 @@ const letters = {
   happy: {
     title: "For your happiest moments ✨",
     text:
-    "Your smile makes everything feel lite. Always Keep Smile on your Face. Don't Forget to Smile."
+    "Your smile makes everything feel lite. Always Keep Smile on your Face. Don't Forget to smile."
   }
 
 };
