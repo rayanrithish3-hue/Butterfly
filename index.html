@@ -44,58 +44,6 @@ body{
   linear-gradient(135deg,#fff7fc,#f4edff);
 }
 
-/* DAY CLOUDS */
-
-.cloud{
-
-  position:fixed;
-
-  background:rgba(255,255,255,.18);
-
-  border-radius:100px;
-
-  filter:blur(12px);
-
-  z-index:-1;
-
-  animation:cloudMove linear infinite;
-}
-
-.cloud1{
-  width:220px;
-  height:70px;
-  top:12%;
-  left:-250px;
-  animation-duration:55s;
-}
-
-.cloud2{
-  width:170px;
-  height:55px;
-  top:28%;
-  left:-180px;
-  animation-duration:70s;
-}
-
-.cloud3{
-  width:260px;
-  height:75px;
-  top:45%;
-  left:-300px;
-  animation-duration:90s;
-}
-
-@keyframes cloudMove{
-
-  from{
-    transform:translateX(0px);
-  }
-
-  to{
-    transform:translateX(160vw);
-  }
-}
-
 /* NIGHT MODE */
 
 body.night{
@@ -549,7 +497,7 @@ body.night .touch-text{
 }
 
 body.night .hero h1{
-  color:#e7ddff;
+  color:#f0e9ff;
 }
 
 .hero p{
@@ -590,11 +538,19 @@ body.night .hero p{
   margin-bottom:12px;
 }
 
+body.night .magic-title{
+  color:#f0e9ff;
+}
+
 .magic-sub{
 
   margin-bottom:38px;
 
   color:#735f7d;
+}
+
+body.night .magic-sub{
+  color:#d9cff7;
 }
 
 .magic-btn{
@@ -647,6 +603,10 @@ body.night .hero p{
   margin-bottom:65px;
 }
 
+body.night .gallery-title{
+  color:#f0e9ff;
+}
+
 .masonry{
 
   column-count:3;
@@ -667,6 +627,10 @@ body.night .hero p{
   background:white;
 }
 
+body.night .gallery-item{
+  background:#2b2d45;
+}
+
 .gallery-item img{
 
   width:100%;
@@ -674,6 +638,10 @@ body.night .hero p{
   display:block;
 
   transition:transform .7s ease;
+
+  aspect-ratio:3/4;
+
+  object-fit:cover;
 }
 
 .gallery-item:hover img{
@@ -687,6 +655,10 @@ body.night .hero p{
   color:#705d7d;
 
   font-size:.95rem;
+}
+
+body.night .caption{
+  color:#e2d8ff;
 }
 
 /* LETTERS */
@@ -712,6 +684,10 @@ body.night .hero p{
   margin-bottom:55px;
 }
 
+body.night .letters-title{
+  color:#f0e9ff;
+}
+
 .letters-grid{
 
   display:grid;
@@ -733,10 +709,7 @@ body.night .hero p{
   border-radius:28px;
 
   background:
-  linear-gradient(
-  135deg,
-  rgba(255,255,255,.35),
-  rgba(255,255,255,.15));
+  rgba(255,255,255,.35);
 
   backdrop-filter:blur(16px);
 
@@ -753,6 +726,18 @@ body.night .hero p{
   padding:25px;
 }
 
+body.night .letter-card{
+
+  background:
+  rgba(255,255,255,.12);
+
+  border:
+  1px solid rgba(255,255,255,.22);
+
+  box-shadow:
+  0 0 25px rgba(180,150,255,.12);
+}
+
 .letter-card span{
 
   font-size:1.3rem;
@@ -760,6 +745,10 @@ body.night .hero p{
   color:#6e5a79;
 
   line-height:1.7;
+}
+
+body.night .letter-card span{
+  color:#f0e9ff;
 }
 
 /* MODALS */
@@ -883,6 +872,10 @@ footer{
   color:#7a6587;
 }
 
+body.night footer{
+  color:#d6cbf5;
+}
+
 /* MOBILE */
 
 @media(max-width:950px){
@@ -942,13 +935,7 @@ footer{
 
 <body>
 
-<!-- DAY CLOUDS -->
-
-<div class="cloud cloud1"></div>
-<div class="cloud cloud2"></div>
-<div class="cloud cloud3"></div>
-
-<!-- NIGHT STARS -->
+<!-- STARS -->
 
 <div class="stars">
 
@@ -961,9 +948,6 @@ footer{
 <div class="star" style="top:62%; left:14%;"></div>
 <div class="star" style="top:72%; left:52%;"></div>
 <div class="star" style="top:84%; left:86%;"></div>
-<div class="star" style="top:18%; left:90%;"></div>
-<div class="star" style="top:45%; left:58%;"></div>
-<div class="star" style="top:68%; left:34%;"></div>
 
 </div>
 
@@ -1081,30 +1065,28 @@ Our memories
 <div class="masonry">
 
 <div class="gallery-item">
-<img src="images/photo1.jpg" loading="lazy">
-<div class="caption">One of my favourite ✨</div>
+<img src="images/photo1.jpg" loading="lazy" onerror="this.src='https://placehold.co/600x800/png'">
+<div class="caption">One of my favourite smiles ✨</div>
 </div>
 
 <div class="gallery-item">
-<img src="images/photo2.jpg" loading="lazy">
+<img src="images/photo2.jpg" loading="lazy" onerror="this.src='https://placehold.co/600x800/png'">
 <div class="caption">Soft little memories 🦋</div>
 </div>
 
 <div class="gallery-item">
-<img src="images/photo3.jpg" loading="lazy">
+<img src="images/photo3.jpg" loading="lazy" onerror="this.src='https://placehold.co/600x800/png'">
 <div class="caption">Beautiful moments forever 💜</div>
 </div>
 
 <div class="gallery-item">
-<img src="images/photo4.jpg" loading="lazy">
+<img src="images/photo4.jpg" loading="lazy" onerror="this.src='https://placehold.co/600x800/png'">
 <div class="caption">The calm in my chaos 🌸</div>
 </div>
 
 </div>
 
 </section>
-
-<!-- LETTERS -->
 
 <section class="letters-section">
 
@@ -1174,21 +1156,13 @@ Made for Bharathi Priya 🦋
 
 const hour = new Date().getHours();
 
-if(hour >= 7 && hour < 18){
-
-  document.body.classList.remove("night");
-}
-
-else{
-
+if(hour >= 18 || hour <= 5){
   document.body.classList.add("night");
 }
 
 /* PIN */
 
 let enteredPin = "";
-
-/* ELEMENTS */
 
 const touchButterfly =
 document.getElementById("touchButterfly");
@@ -1230,7 +1204,7 @@ touchButterfly.onclick = function(){
 
 };
 
-/* PIN FUNCTIONS */
+/* PIN */
 
 function addNumber(num){
 
@@ -1281,9 +1255,7 @@ function checkPin(){
 /* SECRET MESSAGE */
 
 const hiddenMessage =
-"No matter how many people come and go in life, you will always remain one of the not one of the you are the most precious parts of mine. Thank you for being my happiness, my favourite person, and the most beautiful soul I have ever met. 🦋";
-
-/* OPEN MAGIC */
+"No matter how many people come and go in life, you will always remain one of the not one of the you are the most precious parts of mine. Thank you for being my happiness, my safe place, my favourite person, and the most beautiful soul I have ever met. 🦋";
 
 function openMagic(){
 
@@ -1326,8 +1298,6 @@ function openMagic(){
 
 }
 
-/* CLOSE MODAL */
-
 function closeModal(){
 
   document
@@ -1348,7 +1318,7 @@ const letters = {
   happy: {
     title: "For your happiest moments ✨",
     text:
-    "Your smile makes everything feels lite. Always Keep Smile on your Face. Don’t Forget to Smile."
+    "Your smile makes everything feels lite. Always Keep Smile on your Face. Don't Forget to Smile."
   }
 
 };
